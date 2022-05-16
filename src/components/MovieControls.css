@@ -1,0 +1,85 @@
+.ctrl-btn {
+  color: #fefefe;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+  font-size: 1.25rem;
+  padding: 5px;
+}
+
+.ctrl-btn:hover {
+  color: var(--secondary);
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.ctrl-btn:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.ctrl-btn-card {
+  color: #fefefe;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.ctrl-btn-card:hover {
+  color: var(--secondary);
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.ctrl-btn-card:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.modal{
+    z-index: 1000;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #242424;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+}
+
+.modal-desc{
+    padding-left:0.8rem;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}

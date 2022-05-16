@@ -1,0 +1,70 @@
+import React, { useState } from 'react'
+import "./MovieCard.css"
+import { MovieControls } from "./MovieControls";
+import Moment from "react-moment";
+
+const IMG_URL = "https://image.tmdb.org/t/p/w500";
+
+function getColor(vote) {
+    if (vote >= 8) {
+        return "green"
+    } else if (vote >= 5) {
+        return "yellow"
+    } else {
+        return "red"
+    }
+}
+
+function Movie({ movie, type }) {
+    const [modal, setModal] = useState(false)
+
+    const toggleModal = () => {
+        setModal(!modal)
+    }
+
+    if (modal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
+    return (
+        <div >
+            {modal && (
+                <div className="modal">
+                    <div onClick={toggleModal} className="overlay"></div>
+                    <div className="modal-content">
+                        <button
+                            className="ctrl-btn"
+                            onClick={toggleModal}
+                        >
+                            <i className="fa-fw fa fa-times"></i>
+                        </button>
+                        <div className="modal-desc">
+                            <h2>{movie.title} (<Moment format="YYYY">{movie.release_date}</Moment>)</h2>
+                            <p>{movie.vote_average}/10</p>
+                            <br />
+                            <img class="modal-backdrop-img" src={movie.backdrop_path ? IMG_URL + movie.backdrop_path : "https://via.placeholder.com/500x281"} alt={movie.title} />
+                            <p>{movie.overview}</p>
+                            <br />
+                            <MovieControls type={type + "-card"} movie={movie} />
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            <div className="movie-list">
+                <MovieControls type={type} movie={movie} />
+                <br />
+                <img className="movie-list-img" src={movie.poster_path ? IMG_URL + movie.poster_path : "http://via.placeholder.com/1080x1580"} alt={movie.title} onClick={toggleModal} />
+
+                <div className="movie-list-info">
+                    <h3 className="movie-list-title">{movie.title}</h3>
+                    <span className={getColor(movie.vote_average)}><i class="fas fa-star" /> {movie.vote_average}</span>
+                </div>
+            </div >
+        </div>
+    )
+}
+
+export default Movie;

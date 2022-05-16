@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+  }
+  
+  @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap");
+
+:root {
+  --primary: black;
+  --secondary: white;
+  --white: #fff;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #151515;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Movies Page */
+.featured-page{
+  padding: 30px 0;
+}
+
+.featured-page .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.featured-page .heading {
+  color: var(--secondary);
+  margin: 0;
+}
+
+/*Watchlist Page*/
+.watchlist-page {
+  padding: 30px 0;
+}
+
+.watchlist-page .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px
+}
+.watchlist-page .heading {
+  color: var(--secondary);
+  margin: 0;
+}
+.watchlist-page .no-movies {
+  margin-top: 180px;
+  color: #c4c4c4;
+  font-size: 3rem;
+  text-align: center;
+}
+
+/* All Movies Page */
+.movie-page {
+  padding: 30px 0;
+}
+
+.movie-page .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px
+}
+
+.count-pill {
+  margin-bottom: 30px;
+  justify-content: center;
+  display: flex;
+  background-color: var(--secondary);
+  padding: 5px 15px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 999px;
+  color: var(--primary);
+}
+
+.movie-page .heading {
+  color: var(--secondary);
+  margin: 0;
+}
+
+.movie-page .no-results {
+  margin-top: 150px;
+  color: #c4c4c4;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 150px;
+}
