@@ -12,12 +12,12 @@ function VideoBackground() {
       <br />
       <div className="hero-btns">
         <div className="home-item">
-          <Link to="/movie-website-react/now-showing" className="home-links">
+          <Link to="/now-showing" className="home-links">
             Now Showing
           </Link>
         </div>
         <div className="home-item">
-          <Link to="/movie-website-react/watchlist" className="home-links">
+          <Link to="/watchlist" className="home-links">
             Watchlist
           </Link>
         </div>

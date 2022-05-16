@@ -14,11 +14,7 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link
-            to="/movie-website-react/"
-            className="navbar-logo"
-            onClick={closeMobileMenu}
-          >
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             <i className="fab fa-monero" />
           </Link>
 
@@ -27,17 +23,13 @@ function Navbar() {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link
-                to="/movie-website-react/"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
               <Link
-                to="/movie-website-react/now-showing"
+                to="/now-showing"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
@@ -46,7 +38,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/movie-website-react/watchlist"
+                to="/watchlist"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
@@ -55,7 +47,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/movie-website-react/movies"
+                to="/movies"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >

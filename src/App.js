@@ -14,16 +14,10 @@ function App() {
       <Navbar />
       <main>
         <Routes>
-          <Route path="/movie-website-react/" element={<Home />} />
-          <Route
-            path="/movie-website-react/watchlist"
-            element={<Watchlist />}
-          />
-          <Route
-            path="/movie-website-react/now-showing"
-            element={<Popular />}
-          />
-          <Route path="/movie-website-react/movies" element={<Movies />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/now-showing" element={<Popular />} />
+          <Route path="/movies" element={<Movies />} />
         </Routes>
       </main>
     </GlobalProvider>
