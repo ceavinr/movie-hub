@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import '../../App.css';
-import Footer from '../Footer';
+import React, { useContext } from "react";
+import "../../App.css";
+import Footer from "../Footer";
 import { GlobalContext } from "../../context/GlobalState";
-import Movie from '../MovieCard'
+import Movie from "../MovieCard";
 
 function Watchlist() {
   const { watchlist } = useContext(GlobalContext);
@@ -18,12 +18,18 @@ function Watchlist() {
             <>
               <div className="header">
                 <span className="count-pill">
-                  {watchlist.length} {watchlist.length === 1 ? "Movie" : "Movies"}
+                  {watchlist.length}{" "}
+                  {watchlist.length === 1 ? "Movie" : "Movies"}
                 </span>
               </div>
               <div className="movie-container">
                 {watchlist.map((movie) => (
-                  <Movie movie={movie} key={movie.id}{...movie} type="watchlist" />
+                  <Movie
+                    movie={movie}
+                    key={movie.id}
+                    {...movie}
+                    type="watchlist"
+                  />
                 ))}
               </div>
             </>
@@ -32,11 +38,11 @@ function Watchlist() {
           )}
         </div>
       </div>
-      <div className='footer-wl-container'>
+      <div className="footer-wl-container">
         <Footer />
       </div>
     </>
   );
 }
 
-export default Watchlist
+export default Watchlist;
