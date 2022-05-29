@@ -42,7 +42,6 @@
     text-align: center;
     width: 60vw;
     justify-content: end;
-    margin-right: 2rem;
 }
   
 .nav-item {
@@ -77,9 +76,9 @@
     color: #fff;
 }
   
-.nav-links-mobile {
+/* .nav-links-mobile {
     display: none;
-}
+} */
   
 .menu-icon {
     margin-right: 4rem;
@@ -87,19 +86,19 @@
 }
   
 @media screen and (max-width: 960px) {
-    .NavbarItems {
+    .nav-item {
       position: relative;
     }
   
     .nav-menu {
       display: flex;
+      visibility: hidden;
       flex-direction: column;
       width: 100%;
       position: absolute;
       top: 100%;
-      left: 100%;
+      /*left: 100%; */
       opacity: 1;
-      transition: all 0.5s ease;
     }
 
     .count-nav{
@@ -108,9 +107,8 @@
     
     .nav-menu.active {
       background: #242222;
-      left: 0;
+      visibility: visible;
       opacity: 1;
-      transition: all 0.5s ease;
       z-index: 1;
     }
   
@@ -154,7 +152,7 @@
       font-size: 2rem;
     }
   
-    .nav-links-mobile {
+    /* .nav-links-mobile {
       display: block;
       text-align: center;
       margin: 2rem auto;
@@ -173,5 +171,5 @@
       background: #fff;
       color: #242424;
       transition: 250ms;
-    }
+    } */
 }

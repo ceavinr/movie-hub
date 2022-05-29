@@ -1,0 +1,23 @@
+.watchlist-page {
+    padding: 30px 0;
+  }
+  
+  .watchlist-page .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px
+  }
+  .watchlist-page .heading {
+    color: var(--secondary);
+    margin: 0;
+  }
+  
+  .watchlist-page .no-movies {
+    position: relative;
+    margin-top: 40%;
+    margin-bottom: 40%;
+    color: var(--white);
+    font-size: 3rem;
+    text-align: center;
+  }

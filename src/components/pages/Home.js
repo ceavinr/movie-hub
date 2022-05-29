@@ -1,18 +1,13 @@
-import React from 'react'
-import '../../App.css';
-import VideoBackground from '../VideoBackground'
-import Footer from '../Footer';
-
+import React from "react";
+import "../../App.css";
+import Hero from "../Hero";
 
 function Home() {
-    return (
-        <>
-            <VideoBackground />
-            <div className='footer-container'>
-                <Footer />
-            </div>
-        </>
-    );
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }
 
-export default Home
+export default Home;

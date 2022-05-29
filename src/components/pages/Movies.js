@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../../App.css";
-import Footer from "../Footer";
+import "./Movies.css";
 import Movie from "../MovieCard";
-
-const API_KEY = "api_key=9fee2dfca9fac3b1049c2bca2752291c";
-const BASE_URL = "https://api.themoviedb.org/3";
-const API_URL = BASE_URL + "/discover/movie?sort_by=popularity.desc&" + API_KEY;
-const SEARCH_URL = BASE_URL + "/search/movie?" + API_KEY;
+import apiConfig from "../../api/apiConfig";
 
 function Movies() {
   const [query, setQuery] = useState("");
@@ -14,7 +9,7 @@ function Movies() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch(API_URL)
+    fetch(apiConfig.POPULAR_URL)
       .then((res) => res.json())
       .then((data) => {
         console.log(data.results);
@@ -29,7 +24,7 @@ function Movies() {
 
     setQuery(e.target.value);
 
-    fetch(`${SEARCH_URL}&query=${e.target.value}`)
+    fetch(`${apiConfig.SEARCH_URL}&query=${e.target.value}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.errors) {
@@ -52,7 +47,7 @@ function Movies() {
                 type="text"
                 placeholder="Search movie"
                 value={query}
-                onChange={onChange}
+                onChange={onChange ? (e) => onChange(e) : null}
               />
             </div>
           </div>
@@ -61,7 +56,7 @@ function Movies() {
               <h2 className="movie-count">Showing all results for '{query}'</h2>
               <div className="movie-container">
                 {results.map((movie) => (
-                  <Movie type="featured" movie={movie} key={movie.id} />
+                  <Movie type="non-watchlist" movie={movie} key={movie.id} />
                 ))}
               </div>
             </>
@@ -72,17 +67,12 @@ function Movies() {
             </>
           ) : (
             <div className="movie-container">
-              <div className="movie-container">
-                {movies.map((movie) => (
-                  <Movie movie={movie} key={movie.id} type="featured" />
-                ))}
-              </div>
+              {movies.map((movie) => (
+                <Movie movie={movie} key={movie.id} type="non-watchlist" />
+              ))}
             </div>
           )}
         </div>
-      </div>
-      <div className="footer-container">
-        <Footer />
       </div>
     </>
   );

@@ -1,3 +1,16 @@
+.outer-card-controls {
+  display: grid;
+  padding-top: 1rem;
+}
+
+.inner-card-controls {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+
 .ctrl-btn {
   color: #fefefe;
   background-color: transparent;
@@ -19,16 +32,17 @@
 }
 
 .ctrl-btn-card {
-  color: #fefefe;
-  background-color: transparent;
-  border: none;
+  color: var(--primary);
+  background-color: var(--secondary);
+  border-radius: 10px;
   transition: all 0.3s ease;
   font-size: 1.25rem;
   margin-bottom: 10px;
+  padding: 10px;
 }
 
 .ctrl-btn-card:hover {
-  color: var(--secondary);
+  color: var(--primary);
   cursor: pointer;
   opacity: 0.5;
 }
@@ -38,7 +52,4 @@
     opacity: 0.5;
 }
 
-body.active-modal {
-    overflow-y: hidden;
-}
 

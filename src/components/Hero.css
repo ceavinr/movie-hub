@@ -1,14 +1,13 @@
 .main-container img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    filter: blur(10px);
-    z-index: -1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
 }
 
 .main-container {
-    /* background-image: url('/public/images/img-home.jpg') center center/cover no-repeat; */
+    background-image: url('../assets/bg.jpg') center center/cover no-repeat;
     height: 100vh;
     width: 100%;
     display: flex;

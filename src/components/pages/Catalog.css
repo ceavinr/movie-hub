@@ -1,0 +1,138 @@
+.banner {
+  height: 100vh;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.catalog-header {
+  margin-top: -600px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding-bottom: 30px;
+}
+
+.catalog-header span{
+  padding-top: 15px;
+  border: 2px solid;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  align-self:baseline;
+  justify-self: baseline;
+  font-size: 25px;
+}
+
+.catalog-header span.green{
+  color: rgb(50, 219, 50);
+  border-color: rgb(50, 219, 50);
+}
+
+.catalog-header span.yellow{
+  color: yellow;
+  border-color: yellow;
+}
+
+.catalog-header span.red{
+  color: red;
+  border-color: red;
+}
+
+.poster {
+  width: 350px;
+  border-radius: 50px;
+}
+
+.catalog-info {
+  color: var(--secondary);
+  font-size: 25px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+
+.catalog-genres {
+  margin-top: 1rem;
+  display: inline-flex;
+}
+
+.catalog-genre {
+  margin-right: 1rem;
+  padding-top: 15px;
+  border: 2px solid;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.catalog-cast > img {
+  border-radius: 20px;
+}
+
+.catalog-crews > ol{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .catalog-heading {
+    font-size: 200%;
+    width: 90%;
+  }
+  .catalog-heading > span {
+    font-size: 50%;
+  }
+  .catalog-cast > img  {
+    width: 120px;
+  }
+
+  .catalog-page {
+    margin: 3rem;
+  }
+
+  .catalog-info {
+    font-size: 100%;
+  }
+
+  .catalog-poster > img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 690px) {
+  .catalog-info {
+    grid-template-columns: 1fr;
+  }
+  .catalog-poster {
+    width: 60%;
+  }
+  .catalog-poster {
+    justify-self: center;
+  }
+  .catalog-cast > img  {
+    width: 80px;
+  }
+  .catalog-cast > h4, .catalog-cast > h5{
+    font-size: 70%;
+  }
+  .catalog-container > section > h2{
+    font-size: 200%;
+  }
+}
+
+@media (max-width: 500px) {
+  .catalog-cast > img  {
+    width: 50px;
+  }
+  .catalog-heading {
+    font-size: 150%;
+    width: 90%;
+  }
+  .catalog-genre {
+    font-size: 80%;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+  }
+}

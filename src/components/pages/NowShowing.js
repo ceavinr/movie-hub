@@ -1,26 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "../../App.css";
+import "./NowShowing.css";
 import Movie from "../MovieCard";
-import Footer from "../Footer";
-import { format } from "date-fns";
+import apiConfig from "../../api/apiConfig";
 
-const current = new Date();
-var datetime = format(current, "yyyy-MM-dd");
-current.setDate(current.getDate() - 21);
-var previousMonth = format(current, "yyyy-MM-dd");
-
-const API_KEY = "api_key=9fee2dfca9fac3b1049c2bca2752291c";
-const BASE_URL = "https://api.themoviedb.org/3";
-const API_URL =
-  BASE_URL +
-  `/discover/movie?primary_release_date.gte=${previousMonth}&primary_release_date.lte=${datetime}&` +
-  API_KEY;
-
-function Popular() {
+function NowShowing() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch(API_URL)
+    fetch(apiConfig.NOW_SHOWING_URL)
       .then((res) => res.json())
       .then((data) => {
         console.log(data.results);
@@ -34,7 +21,7 @@ function Popular() {
   return (
     <>
       <div className="container">
-        <div className="featured-page">
+        <div className="now-showing-page">
           <div className="header">
             <h1 className="heading">Now Showing</h1>
           </div>
@@ -45,17 +32,14 @@ function Popular() {
                   movie={movie}
                   key={movie.id}
                   {...movie}
-                  type="featured"
+                  type="non-watchlist"
                 />
               ))}
           </div>
         </div>
       </div>
-      <div className="footer-container">
-        <Footer />
-      </div>
     </>
   );
 }
 
-export default Popular;
+export default NowShowing;

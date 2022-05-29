@@ -1,10 +1,10 @@
 import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import "./VideoBackground.css";
-import bg from "../img/img-home.jpg";
+import "./Hero.css";
+import bg from "../assets/bg.jpg";
 
-function VideoBackground() {
+function Hero() {
   return (
     <div className="main-container">
       <img src={bg} alt="home" center cover no-repeat />
@@ -26,4 +26,4 @@ function VideoBackground() {
   );
 }
 
-export default VideoBackground;
+export default Hero;

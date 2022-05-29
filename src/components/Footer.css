@@ -6,15 +6,6 @@
   justify-content: center;
   align-items: center;
 }
-.footer-wl-container {
-  background-color: #242424;
-  padding: 4rem 0 2rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
-  margin-top: 300px;
-}
 
 .social-icon-link {
   color: #fff;

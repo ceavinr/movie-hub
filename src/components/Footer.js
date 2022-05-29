@@ -3,7 +3,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <>
+    <div className="footer-container">
       <div className="footer-logo">
         <h2 className="social-logo">MovieHub</h2>
       </div>
@@ -44,7 +44,7 @@ function Footer() {
           <i className="fab fa-linkedin" />
         </a>
       </div>
-    </>
+    </div>
   );
 }
 

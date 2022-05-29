@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import "../../App.css";
-import Footer from "../Footer";
+import "./Watchlist.css";
 import { GlobalContext } from "../../context/GlobalState";
 import Movie from "../MovieCard";
 
@@ -34,12 +33,15 @@ function Watchlist() {
               </div>
             </>
           ) : (
-            <h2 className="no-movies">There is no movies in your watchlist</h2>
+            <>
+              <div className="movie-container">
+                <h2 className="no-movies">
+                  There is no movies in your watchlist
+                </h2>
+              </div>
+            </>
           )}
         </div>
-      </div>
-      <div className="footer-wl-container">
-        <Footer />
       </div>
     </>
   );
