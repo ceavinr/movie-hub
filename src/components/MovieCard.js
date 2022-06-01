@@ -19,8 +19,6 @@ function getColor(vote) {
 function Movie({ movie, card_type }) {
   const [modal, setModal] = useState(false);
 
-  let { category } = useParams();
-
   const toggleModal = () => {
     setModal(!modal);
   };
@@ -42,7 +40,7 @@ function Movie({ movie, card_type }) {
             </button>
             <div className="modal-desc">
               <h2>
-                {category === "movie" ? (
+                {movie.title ? (
                   <>
                     {movie.title} (
                     <Moment format="YYYY">{movie.release_date}</Moment>)
@@ -56,7 +54,7 @@ function Movie({ movie, card_type }) {
               </h2>
               <p>{movie.vote_average.toFixed(1)}/10</p>
               <br />
-              {category === "movie" ? (
+              {movie.title ? (
                 <img
                   class="modal-backdrop-img"
                   src={
@@ -98,7 +96,7 @@ function Movie({ movie, card_type }) {
       <div className="movie-list">
         <MovieControls type={card_type} movie={movie} />
         <div className="movie-list-img-container">
-          {category === "movie" ? (
+          {movie.title ? (
             <img
               className="movie-list-img"
               src={
@@ -123,13 +121,7 @@ function Movie({ movie, card_type }) {
           )}
         </div>
         <div className="movie-list-info">
-          {card_type === "non-watchlist" ? (
-            category === "movie" ? (
-              <h3 className="movie-list-title">{movie.title}</h3>
-            ) : (
-              <h3 className="movie-list-title">{movie.name}</h3>
-            )
-          ) : movie.title ? (
+          {movie.title ? (
             <h3 className="movie-list-title">{movie.title}</h3>
           ) : (
             <h3 className="movie-list-title">{movie.name}</h3>

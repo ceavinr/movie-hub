@@ -19,19 +19,28 @@ function Watchlist() {
             <>
               <div className="header">
                 <span className="count-pill">
-                  {watchlist.length}{" "}
+                  {watchlist.length + " "}
                   {watchlist.length === 1 ? "Movie" : "Movies"}
                 </span>
               </div>
               <div className="movie-container">
-                {watchlist.map((movie) => (
-                  <Movie
-                    movie={movie}
-                    key={movie.id}
-                    {...movie}
-                    card_type="watchlist"
-                  />
-                ))}
+                {watchlist.map((movie) =>
+                  movie.hasOwnProperty("release_date") ? (
+                    <Movie
+                      movie={movie}
+                      key={movie.id}
+                      {...movie}
+                      card_type="watchlist-movie"
+                    />
+                  ) : (
+                    <Movie
+                      movie={movie}
+                      key={movie.id}
+                      {...movie}
+                      card_type="watchlist-tv"
+                    />
+                  )
+                )}
               </div>
             </>
           ) : (

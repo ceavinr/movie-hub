@@ -9,7 +9,10 @@ import bg from "../../assets/bg.jpg";
 function Movies() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+
   const [movies, setMovies] = useState([]);
+
+  const [genres, setGenres] = useState([]);
 
   let { category } = useParams();
 
@@ -22,6 +25,17 @@ function Movies() {
           if (data.results.length !== 0) {
             setMovies(data.results);
           }
+        });
+    }
+  }, [category]);
+
+  useEffect(() => {
+    if (category === "movie" || category === "tv") {
+      fetch(apiConfig[category].GENRE_URL)
+        .then((res) => res.json())
+        .then((genres_data) => {
+          console.log(genres_data.genres);
+          setGenres(genres_data.genres);
         });
     }
   }, [category]);
@@ -41,6 +55,7 @@ function Movies() {
         }
       });
   };
+
   return (
     <>
       <div className="container">
@@ -63,13 +78,25 @@ function Movies() {
               />
             </div>
           </div>
+
           {results.length > 0 ? (
             <>
+              {genres
+                ? genres.map((genre) => (
+                    <a
+                      href={category + "/genres/" + genre.name}
+                      className="movie-genre"
+                    >
+                      {genre.name}
+                    </a>
+                  ))
+                : ""}
               <h2 className="movie-count">Showing all results for '{query}'</h2>
+
               <div className="movie-container">
                 {results.map((movie) => (
                   <Movie
-                    card_type="non-watchlist"
+                    card_type={"non-watchlist-" + category}
                     movie={movie}
                     key={movie.id}
                   />
@@ -84,7 +111,11 @@ function Movies() {
           ) : (
             <div className="movie-container">
               {movies.map((movie) => (
-                <Movie movie={movie} key={movie.id} card_type="non-watchlist" />
+                <Movie
+                  movie={movie}
+                  key={movie.id}
+                  card_type={"non-watchlist-" + category}
+                />
               ))}
             </div>
           )}
