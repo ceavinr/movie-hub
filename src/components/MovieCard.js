@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MovieCard.css";
 import { MovieControls } from "./MovieControls";
 import Moment from "react-moment";
+import { useParams } from "react-router-dom";
 
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -15,8 +16,10 @@ function getColor(vote) {
   }
 }
 
-function Movie({ movie, type }) {
+function Movie({ movie, card_type }) {
   const [modal, setModal] = useState(false);
+
+  let { category } = useParams();
 
   const toggleModal = () => {
     setModal(!modal);
@@ -39,26 +42,52 @@ function Movie({ movie, type }) {
             </button>
             <div className="modal-desc">
               <h2>
-                {movie.title} (
-                <Moment format="YYYY">{movie.release_date}</Moment>)
+                {category === "movie" ? (
+                  <>
+                    {movie.title} (
+                    <Moment format="YYYY">{movie.release_date}</Moment>)
+                  </>
+                ) : (
+                  <>
+                    {movie.name} (
+                    <Moment format="YYYY">{movie.first_air_date}</Moment>)
+                  </>
+                )}
               </h2>
-              <p>{movie.vote_average}/10</p>
-
+              <p>{movie.vote_average.toFixed(1)}/10</p>
               <br />
-              <img
-                class="modal-backdrop-img"
-                src={
-                  movie.backdrop_path
-                    ? IMG_URL + movie.backdrop_path
-                    : "https://via.placeholder.com/500x281"
-                }
-                alt={movie.title}
-              />
-              <p>{movie.overview}</p>
+              {category === "movie" ? (
+                <img
+                  class="modal-backdrop-img"
+                  src={
+                    movie.backdrop_path
+                      ? IMG_URL + movie.backdrop_path
+                      : "https://via.placeholder.com/500x281"
+                  }
+                  alt={movie.title}
+                />
+              ) : (
+                <img
+                  class="modal-backdrop-img"
+                  src={
+                    movie.backdrop_path
+                      ? IMG_URL + movie.backdrop_path
+                      : "https://via.placeholder.com/500x281"
+                  }
+                  alt={movie.name}
+                />
+              )}
+              {movie.overview ? (
+                <p>{movie.overview}</p>
+              ) : (
+                <p className="warning">
+                  We still don't have an overview translated in English.
+                </p>
+              )}
               <br />
               <MovieControls
                 onClick={toggleModal}
-                type={type + "-card"}
+                type={card_type + "-card"}
                 movie={movie}
               />
             </div>
@@ -67,23 +96,46 @@ function Movie({ movie, type }) {
       )}
 
       <div className="movie-list">
-        <MovieControls type={type} movie={movie} />
-        <br />
-        <img
-          className="movie-list-img"
-          src={
-            movie.poster_path
-              ? IMG_URL + movie.poster_path
-              : "http://via.placeholder.com/1080x1580"
-          }
-          alt={movie.title}
-          onClick={toggleModal}
-        />
-
+        <MovieControls type={card_type} movie={movie} />
+        <div className="movie-list-img-container">
+          {category === "movie" ? (
+            <img
+              className="movie-list-img"
+              src={
+                movie.poster_path
+                  ? IMG_URL + movie.poster_path
+                  : "http://via.placeholder.com/1080x1580"
+              }
+              alt={movie.title}
+              onClick={toggleModal}
+            />
+          ) : (
+            <img
+              className="movie-list-img"
+              src={
+                movie.poster_path
+                  ? IMG_URL + movie.poster_path
+                  : "http://via.placeholder.com/1080x1580"
+              }
+              alt={movie.name}
+              onClick={toggleModal}
+            />
+          )}
+        </div>
         <div className="movie-list-info">
-          <h3 className="movie-list-title">{movie.title}</h3>
+          {card_type === "non-watchlist" ? (
+            category === "movie" ? (
+              <h3 className="movie-list-title">{movie.title}</h3>
+            ) : (
+              <h3 className="movie-list-title">{movie.name}</h3>
+            )
+          ) : movie.title ? (
+            <h3 className="movie-list-title">{movie.title}</h3>
+          ) : (
+            <h3 className="movie-list-title">{movie.name}</h3>
+          )}
           <span className={getColor(movie.vote_average)}>
-            <i class="fas fa-star" /> {movie.vote_average}
+            <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
           </span>
         </div>
       </div>

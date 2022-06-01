@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { API_KEY, BASE_URL, anjay, anjrot } from "../../api/apiConfig";
+import { API_KEY, BASE_URL } from "../../api/apiConfig";
 import Moment from "react-moment";
 import "./Catalog.css";
 
@@ -11,7 +11,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
-import { MobileFriendly } from "@material-ui/icons";
 
 function getColor(vote) {
   if (vote >= 8) {
@@ -27,9 +26,9 @@ const IMG_URL_W200 = "https://image.tmdb.org/t/p/w200";
 const requestData = (URL) => fetch(URL).then((res) => res.json());
 
 const Catalog = () => {
-  const { id } = useParams();
-  const MOVIE_URL = BASE_URL + `/movie/${id}?` + API_KEY;
-  const CREDITS_URL = BASE_URL + `/movie/${id}/credits?` + API_KEY;
+  const { category, id } = useParams();
+  const MOVIE_URL = BASE_URL + `/${category}/${id}?` + API_KEY;
+  const CREDITS_URL = BASE_URL + `/${category}/${id}/credits?` + API_KEY;
 
   const [movie, setMovie] = useState([]);
   const [casts, setCasts] = useState([]);
@@ -42,7 +41,7 @@ const Catalog = () => {
         setMovie(movie_data);
       }
     });
-  }, []);
+  }, [MOVIE_URL]);
 
   useEffect(() => {
     requestData(CREDITS_URL).then((credits_data) => {
@@ -50,7 +49,7 @@ const Catalog = () => {
       setCasts(credits_data.cast);
       setCrews(credits_data.crew);
     });
-  }, []);
+  }, [CREDITS_URL]);
 
   console.log(crews);
   return (
@@ -76,10 +75,11 @@ const Catalog = () => {
         <div className="catalog-page">
           <div className="catalog-header">
             <h1 className="catalog-heading">
-              {movie.title}
+              {category === "movie" ? movie.title : movie.name}
               {"\u00A0"}
               <span className={getColor(movie.vote_average)}>
-                <i class="fas fa-star" /> {movie.vote_average}
+                <i class="fas fa-star" />{" "}
+                {movie.vote_average ? movie.vote_average.toFixed(1) : ""}
               </span>
             </h1>
 
@@ -107,24 +107,49 @@ const Catalog = () => {
             <div className="catalog-container">
               <section className="catalog-info">
                 <div className="catalog-poster">
-                  <img
-                    class="poster"
-                    src={
-                      movie.poster_path
-                        ? IMG_URL_ORIGINAL + movie.poster_path
-                        : "https://via.placeholder.com/3840x2160"
-                    }
-                    alt={movie.title}
-                  />
+                  {category === "movie" ? (
+                    <img
+                      class="poster"
+                      src={
+                        movie.poster_path
+                          ? IMG_URL_ORIGINAL + movie.poster_path
+                          : "https://via.placeholder.com/3840x2160"
+                      }
+                      alt={movie.title}
+                    />
+                  ) : (
+                    <img
+                      class="poster"
+                      src={
+                        movie.poster_path
+                          ? IMG_URL_ORIGINAL + movie.poster_path
+                          : "https://via.placeholder.com/3840x2160"
+                      }
+                      alt={movie.name}
+                    />
+                  )}
                 </div>
                 <div className="catalog-desc">
-                  <p>{movie.overview}</p>
+                  {movie.overview ? (
+                    <p>{movie.overview}</p>
+                  ) : (
+                    <p className="warning">
+                      We still don't have an overview translated in English.
+                    </p>
+                  )}
+
                   <br />
                   <p>
                     Release date: {"\u00A0"}
-                    <Moment format="MMMM D, YYYY" withTitle>
-                      {movie.release_date}
-                    </Moment>
+                    {category === "movie" ? (
+                      <Moment format="MMMM D, YYYY" withTitle>
+                        {movie.release_date}
+                      </Moment>
+                    ) : (
+                      <Moment format="MMMM D, YYYY" withTitle>
+                        {movie.first_air_date}
+                      </Moment>
+                    )}
                   </p>
                   <br />
                   <div className="catalog-crews">

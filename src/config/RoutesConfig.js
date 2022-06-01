@@ -11,9 +11,10 @@ const RoutesConfig = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/watchlist" element={<Watchlist />} />
-      <Route path="/now-showing" element={<NowShowing />} />
-      <Route path="/movies" element={<Movies />} />
-      <Route path="/movies/:id" element={<Catalog />} />
+      <Route path="/:category/now-showing" element={<NowShowing />} />
+      <Route path="/:category" element={<Movies />} />
+      <Route path="/:category/:id" element={<Catalog />} />
+      <Route path="*" element={<Home />} />
     </Routes>
   );
 };

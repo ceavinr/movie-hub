@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import "./Watchlist.css";
 import { GlobalContext } from "../../context/GlobalState";
 import Movie from "../MovieCard";
+import bg from "../../assets/bg.jpg";
 
 function Watchlist() {
   const { watchlist } = useContext(GlobalContext);
   return (
     <>
       <div className="container">
+        <img src={bg} alt="" center cover no-repeat />
         <div className="watchlist-page">
           <div className="header">
             <h1 className="heading">My Watchlist</h1>
@@ -27,7 +29,7 @@ function Watchlist() {
                     movie={movie}
                     key={movie.id}
                     {...movie}
-                    type="watchlist"
+                    card_type="watchlist"
                   />
                 ))}
               </div>

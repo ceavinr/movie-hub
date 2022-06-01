@@ -1,6 +1,6 @@
 .outer-card-controls {
   display: grid;
-  padding-top: 1rem;
+  padding: 1rem 0 1rem;
 }
 
 .inner-card-controls {

@@ -7,7 +7,7 @@ function NowShowing() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch(apiConfig.NOW_SHOWING_URL)
+    fetch(apiConfig.movies.NOW_SHOWING_MOVIE)
       .then((res) => res.json())
       .then((data) => {
         console.log(data.results);
@@ -32,7 +32,7 @@ function NowShowing() {
                   movie={movie}
                   key={movie.id}
                   {...movie}
-                  type="non-watchlist"
+                  card_type="non-watchlist"
                 />
               ))}
           </div>
