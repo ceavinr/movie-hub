@@ -134,7 +134,7 @@ const Catalog = () => {
                           people.job === "Screenplay" ||
                           people.job === "Director" ||
                           people.job === "Characters" ? (
-                            <li className="catalog-cast">
+                            <li className="catalog-crew">
                               <h4>{people.name}</h4>
                               <h5>({people.job})</h5>
                               <br />

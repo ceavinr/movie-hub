@@ -15,9 +15,19 @@
   
   .watchlist-page .no-movies {
     position: relative;
-    margin-top: 40%;
-    margin-bottom: 40%;
+    margin-top: 21%;
+    margin-bottom: 21%;
     color: var(--white);
     font-size: 3rem;
     text-align: center;
   }
+  
+  /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
+@media screen and (max-width: 1024px) {
+  
+}
+
+/* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
+@media screen and (max-width: 600px) {
+  
+}

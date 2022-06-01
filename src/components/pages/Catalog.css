@@ -1,3 +1,8 @@
+.catalog-page {
+  padding: 30px 0;
+  margin: 0 10rem 0 10rem;
+}
+
 .banner {
   height: 100vh;
   position: relative;
@@ -41,7 +46,7 @@
 }
 
 .poster {
-  width: 350px;
+  width: 500px;
   border-radius: 50px;
 }
 
@@ -76,10 +81,10 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 768px) {
+/* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
+@media screen and (max-width: 1024px) {
   .catalog-heading {
-    font-size: 200%;
-    width: 90%;
+    font-size: 300%;
   }
   .catalog-heading > span {
     font-size: 50%;
@@ -88,28 +93,27 @@
     width: 120px;
   }
 
-  .catalog-page {
-    margin: 3rem;
-  }
-
   .catalog-info {
     font-size: 100%;
   }
 
-  .catalog-poster > img {
+  .poster {
     width: 100%;
   }
 }
 
-@media (max-width: 690px) {
+/* ============= MEDIA QUERIES (SMALLER DEVICES) ============= */ 
+@media (max-width: 768px) {
   .catalog-info {
     grid-template-columns: 1fr;
   }
-  .catalog-poster {
-    width: 60%;
+
+  .catalog-info {
+    font-size: 150%;
   }
   .catalog-poster {
-    justify-self: center;
+    display: flex;
+    justify-content: center;
   }
   .catalog-cast > img  {
     width: 80px;
@@ -117,18 +121,30 @@
   .catalog-cast > h4, .catalog-cast > h5{
     font-size: 70%;
   }
-  .catalog-container > section > h2{
-    font-size: 200%;
+  .catalog-crew > h4, .catalog-crew > h5{
+    font-size: 70%;
   }
+
 }
 
-@media (max-width: 500px) {
-  .catalog-cast > img  {
-    width: 50px;
+/* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
+@media screen and (max-width: 600px) {
+  .catalog-page {
+    margin: 2rem;
+  }
+  .catalog-info {
+    font-size: 90%;
+  }
+  .poster  {
+    width: 70%;
+    align-self: center;
   }
   .catalog-heading {
     font-size: 150%;
     width: 90%;
+  }
+  .catalog-cast > h4, .catalog-cast > h5{
+    font-size: 60%;
   }
   .catalog-genre {
     font-size: 80%;
@@ -136,3 +152,4 @@
     margin-right: 0.5rem;
   }
 }
+
