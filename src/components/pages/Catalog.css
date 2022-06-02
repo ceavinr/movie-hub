@@ -64,6 +64,10 @@
   gap: 1rem;
 }
 
+.swiper-container {
+  display: flex;
+}
+
 .catalog-genres {
   margin-top: 1rem;
   display: flex;
@@ -113,12 +117,6 @@
     display: flex;
     justify-content: center;
   }
-  .catalog-cast > img  {
-    width: 80px;
-  }
-  .catalog-cast > h4, .catalog-cast > h5{
-    font-size: 70%;
-  }
   .catalog-crew > h4, .catalog-crew > h5{
     font-size: 70%;
   }
@@ -143,7 +141,7 @@
     width: 90%;
   }
   .catalog-cast > h4, .catalog-cast > h5{
-    font-size: 60%;
+    font-size: 80%;
   }
   .catalog-genre {
     font-size: 80%;
@@ -151,4 +149,3 @@
     margin-right: 0.5rem;
   }
 }
-

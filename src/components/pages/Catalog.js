@@ -5,7 +5,7 @@ import Moment from "react-moment";
 import "./Catalog.css";
 
 // import Swiper core and required modules
-import { Pagination } from "swiper";
+import { Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -185,10 +185,26 @@ const Catalog = () => {
                 <h2 className="catalog-heading">Casts</h2>
                 <br />
                 <Swiper
-                  slidesPerView={5}
-                  pagination={{ clickable: true }}
-                  modules={[Pagination]}
+                  pagination={{
+                    type: "progressbar",
+                  }}
+                  slidesPerView="auto"
+                  modules={[Pagination, Navigation]}
                   className="catalog-casts"
+                  breakpoints={{
+                    425: {
+                      slidesPerView: 2,
+                    },
+                    768: {
+                      slidesPerView: 4,
+                    },
+                    1024: {
+                      slidesPerView: 5,
+                    },
+                    1400: {
+                      slidesPerView: 6,
+                    },
+                  }}
                 >
                   {casts ? (
                     casts.map((people) => (
