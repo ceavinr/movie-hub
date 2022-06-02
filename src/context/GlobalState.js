@@ -34,6 +34,13 @@ function reducer(state, action) {
             movie.id !== action.payload || !movie.hasOwnProperty("name")
         ),
       };
+    case "REMOVE_ALL_FROM_WATCHLIST":
+      return {
+        ...state,
+        watchlist: state.watchlist.filter(
+          (movie) => movie.id === action.payload
+        ),
+      };
     default:
       return state;
   }
@@ -51,13 +58,14 @@ export const GlobalProvider = (props) => {
   const addMovieToWatchlist = (movie) => {
     dispatch({ type: "ADD_MOVIE_TO_WATCHLIST", payload: movie });
   };
-
   const removeMovieFromWatchlist = (id) => {
     dispatch({ type: "REMOVE_MOVIE_FROM_WATCHLIST", payload: id });
   };
-
   const removeTvFromWatchlist = (id) => {
     dispatch({ type: "REMOVE_TV_FROM_WATCHLIST", payload: id });
+  };
+  const removeAllFromWatchlist = () => {
+    dispatch({ type: "REMOVE_ALL_FROM_WATCHLIST", payload: null });
   };
 
   return (
@@ -67,6 +75,7 @@ export const GlobalProvider = (props) => {
         addMovieToWatchlist,
         removeMovieFromWatchlist,
         removeTvFromWatchlist,
+        removeAllFromWatchlist,
       }}
     >
       {props.children}

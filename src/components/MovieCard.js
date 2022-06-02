@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./MovieCard.css";
 import { MovieControls } from "./MovieControls";
 import Moment from "react-moment";
-import { useParams } from "react-router-dom";
 
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 

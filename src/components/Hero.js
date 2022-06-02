@@ -6,20 +6,21 @@ import bg from "../assets/bg.jpg";
 
 function Hero() {
   return (
-    <div className="main-container">
-      <img src={bg} alt="home" center cover no-repeat />
-      <h1>MovieHub</h1>
-      <br />
-      <div className="hero-btns">
-        <div className="home-item">
-          <Link to="/now-showing" className="home-links">
-            Now Showing
-          </Link>
-        </div>
-        <div className="home-item">
-          <Link to="/watchlist" className="home-links">
-            Watchlist
-          </Link>
+    <div className="background">
+      <img src={bg} alt="home" />
+      <div className="main-container">
+        <h1>MovieHub</h1>
+        <div className="hero-btns">
+          <div className="home-item">
+            <Link to="/movie" className="home-links">
+              Movies
+            </Link>
+          </div>
+          <div className="home-item">
+            <Link to="/tv" className="home-links">
+              TV Series
+            </Link>
+          </div>
         </div>
       </div>
     </div>

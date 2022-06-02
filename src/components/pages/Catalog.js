@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { API_KEY, BASE_URL } from "../../api/apiConfig";
 import Moment from "react-moment";
 import "./Catalog.css";
@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
+import GenreBox from "../GenreBox";
 
 function getColor(vote) {
   if (vote >= 8) {
@@ -27,6 +28,8 @@ const requestData = (URL) => fetch(URL).then((res) => res.json());
 
 const Catalog = () => {
   const { category, id } = useParams();
+  const navigate = useNavigate();
+
   const MOVIE_URL = BASE_URL + `/${category}/${id}?` + API_KEY;
   const CREDITS_URL = BASE_URL + `/${category}/${id}/credits?` + API_KEY;
 
@@ -54,7 +57,7 @@ const Catalog = () => {
   console.log(crews);
   return (
     <>
-      {Object.keys(movie).length != 3 ? (
+      {Object.keys(movie).length !== 3 ? (
         <>
           <div
             className="banner"
@@ -83,22 +86,24 @@ const Catalog = () => {
               </span>
             </h1>
 
-            <ol>
+            <div className="catalog-genres">
               {movie.genres ? (
                 movie.genres.map((genre) => (
-                  <div className="catalog-genres">
-                    <li key={genre.id} className="catalog-genre">
-                      <a>{genre.name}</a>
-                    </li>
-                  </div>
+                  <GenreBox
+                    className="movie-genre"
+                    onClick={() => {
+                      navigate(`${"/" + category + "/genres/" + genre.id}`);
+                    }}
+                    genre={genre}
+                  />
                 ))
               ) : (
                 <></>
               )}
-            </ol>
+            </div>
           </div>
 
-          {Object.keys(movie).length == 3 ? (
+          {Object.keys(movie).length === 3 ? (
             <div>
               <h2 className="no-results">Status code: {movie.status_code}</h2>
               <h2 className="no-results">{movie.status_message}</h2>
@@ -113,7 +118,7 @@ const Catalog = () => {
                       src={
                         movie.poster_path
                           ? IMG_URL_ORIGINAL + movie.poster_path
-                          : "https://via.placeholder.com/3840x2160"
+                          : "https://via.placeholder.com/2000x3000"
                       }
                       alt={movie.title}
                     />
@@ -123,7 +128,7 @@ const Catalog = () => {
                       src={
                         movie.poster_path
                           ? IMG_URL_ORIGINAL + movie.poster_path
-                          : "https://via.placeholder.com/3840x2160"
+                          : "https://via.placeholder.com/2000x3000"
                       }
                       alt={movie.name}
                     />

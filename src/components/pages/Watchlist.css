@@ -12,7 +12,20 @@
     color: var(--secondary);
     margin: 0;
   }
-  
+  .watchlist-header-button {
+    position: relative;
+    left: 50%;
+    width: 10rem;
+    margin-left: -5rem;
+    padding: 5px;
+    border: 2px solid;
+    border-color: var(--secondary);
+    color: var(--primary);
+    border-radius: 30px;
+    font-size: 20px;
+    transition: all 20ms ease-in-out ;
+    cursor: pointer;
+  }
   .watchlist-page .no-movies {
     position: relative;
     margin-top: 21%;

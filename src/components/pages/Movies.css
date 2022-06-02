@@ -33,14 +33,15 @@
     margin: 0;
   }
   
-  .movie-genre {
-    margin-right: 1rem;
-    padding-top: 15px;
-    border: 2px solid;
-    padding: 0.5rem 1.5rem;
-    border-radius: 30px;
-    font-weight: bold;
+  .movie-genres{
+    color: var(--primary);
+    margin: 2rem 10% 2rem 10% ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
+
   
   .no-results {
     margin-top: 150px;

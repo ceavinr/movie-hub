@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalState";
 import "./MovieControls.css";
 
@@ -21,7 +21,6 @@ export const MovieControls = ({ type, movie }) => {
   const watchlistDisabled = storedMovie || storedTv ? true : false;
 
   const navigate = useNavigate();
-  let { category } = useParams();
 
   return (
     <>
@@ -114,7 +113,7 @@ export const MovieControls = ({ type, movie }) => {
           <button
             className="ctrl-btn-card"
             onClick={() => {
-              navigate(`${"/" + category + "/" + movie.id}`);
+              navigate(`${"/tv/" + movie.id}`);
             }}
           >
             <i className="fa-fw fa fa-info"></i> Details
@@ -134,7 +133,7 @@ export const MovieControls = ({ type, movie }) => {
           <button
             className="ctrl-btn-card"
             onClick={() => {
-              navigate(`${"/" + category + "/" + movie.id}`);
+              navigate(`${"/movie/" + movie.id}`);
             }}
           >
             <i className="fa-fw fa fa-info"></i> Details

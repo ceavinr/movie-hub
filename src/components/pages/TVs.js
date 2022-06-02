@@ -6,7 +6,7 @@ import GenreBox from "../GenreBox";
 import apiConfig from "../../api/apiConfig";
 import bg from "../../assets/bg.jpg";
 
-function Movies() {
+function TVs() {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState([]);
   const [results, setResults] = useState([]);
@@ -16,7 +16,7 @@ function Movies() {
 
   // Genre list
   useEffect(() => {
-    fetch(apiConfig.movie.GENRE_URL)
+    fetch(apiConfig.tv.GENRE_URL)
       .then((res) => res.json())
       .then((genres_data) => {
         setGenres(genres_data.genres);
@@ -27,7 +27,7 @@ function Movies() {
   useEffect(() => {
     fetch(
       `${
-        apiConfig.movie.DISCOVER_GENRE_URL
+        apiConfig.tv.DISCOVER_GENRE_URL
       }${active.toString()}&api_key=9fee2dfca9fac3b1049c2bca2752291c`
     )
       .then((res) => res.json())
@@ -47,7 +47,7 @@ function Movies() {
 
     setQuery(e.target.value);
 
-    fetch(`${apiConfig.movie.SEARCH_URL}&query=${e.target.value}`)
+    fetch(`${apiConfig.tv.SEARCH_URL}&query=${e.target.value}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.errors) {
@@ -76,11 +76,10 @@ function Movies() {
     <>
       <div className="background">
         <img src={bg} alt="" />
-
         <div className="container">
           <div className="movie-page">
             <div className="header">
-              <h1 className="heading">Movies</h1>
+              <h1 className="heading">TV Series</h1>
             </div>
 
             <div className="movie-genres">
@@ -121,7 +120,7 @@ function Movies() {
                 <div className="movie-container">
                   {results.map((movie) => (
                     <Movie
-                      card_type={"non-watchlist-movie"}
+                      card_type={"non-watchlist-tv"}
                       movie={movie}
                       key={movie.id}
                     />
@@ -141,7 +140,7 @@ function Movies() {
                   <Movie
                     movie={movie}
                     key={movie.id}
-                    card_type={"non-watchlist-movie"}
+                    card_type={"non-watchlist-tv"}
                   />
                 ))}
               </div>
@@ -153,4 +152,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default TVs;

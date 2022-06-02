@@ -1,6 +1,5 @@
 .catalog-page {
   padding: 30px 0;
-  margin: 0 10rem 0 10rem;
 }
 
 .banner {
@@ -13,20 +12,27 @@
 }
 
 .catalog-header {
-  margin-top: -600px;
+  margin: -600px 5% 30px 5%;
   display: grid;
   grid-template-rows: 1fr auto;
-  padding-bottom: 30px;
+}
+
+.catalog-heading{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.catalog-container {
+  margin: 0 5% 30px 5%;
 }
 
 .catalog-header span{
-  padding-top: 15px;
+  bottom: 0;
   border: 2px solid;
   padding: 0.25rem 0.5rem;
   border-radius: 10px;
   font-weight: bold;
-  align-self:baseline;
-  justify-self: baseline;
+  align-self: center;
   font-size: 25px;
 }
 
@@ -60,16 +66,8 @@
 
 .catalog-genres {
   margin-top: 1rem;
-  display: inline-flex;
-}
-
-.catalog-genre {
-  margin-right: 1rem;
-  padding-top: 15px;
-  border: 2px solid;
-  padding: 0.5rem 1.5rem;
-  border-radius: 30px;
-  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .catalog-cast > img {
@@ -138,6 +136,7 @@
   .poster  {
     width: 70%;
     align-self: center;
+    border-radius: 10px;
   }
   .catalog-heading {
     font-size: 150%;
