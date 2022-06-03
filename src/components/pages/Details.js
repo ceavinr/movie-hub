@@ -2,16 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { API_KEY, BASE_URL } from "../../api/apiConfig";
 import Moment from "react-moment";
-import "./Catalog.css";
+import "./Details.css";
 
-// import Swiper core and required modules
-import { Pagination, Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
 import GenreBox from "../GenreBox";
+import CastCards from "../CastCards";
+import VideoCards from "../VideoCards";
 
 function getColor(vote) {
   if (vote >= 8) {
@@ -23,19 +18,21 @@ function getColor(vote) {
   }
 }
 const IMG_URL_ORIGINAL = "https://image.tmdb.org/t/p/original";
-const IMG_URL_W200 = "https://image.tmdb.org/t/p/w200";
+
 const requestData = (URL) => fetch(URL).then((res) => res.json());
 
-const Catalog = () => {
+const Details = () => {
   const { category, id } = useParams();
   const navigate = useNavigate();
 
   const MOVIE_URL = BASE_URL + `/${category}/${id}?` + API_KEY;
   const CREDITS_URL = BASE_URL + `/${category}/${id}/credits?` + API_KEY;
+  const VIDEOS_URL = BASE_URL + `/${category}/${id}/videos?` + API_KEY;
 
   const [movie, setMovie] = useState([]);
   const [casts, setCasts] = useState([]);
   const [crews, setCrews] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     requestData(MOVIE_URL).then((movie_data) => {
@@ -54,7 +51,13 @@ const Catalog = () => {
     });
   }, [CREDITS_URL]);
 
-  console.log(crews);
+  useEffect(() => {
+    requestData(VIDEOS_URL).then((videos_data) => {
+      setVideos(videos_data.results);
+    });
+  }, [VIDEOS_URL]);
+
+  console.log(videos);
   return (
     <>
       {Object.keys(movie).length !== 3 ? (
@@ -75,9 +78,9 @@ const Catalog = () => {
       )}
 
       <div className="container">
-        <div className="catalog-page">
-          <div className="catalog-header">
-            <h1 className="catalog-heading">
+        <div className="details-page">
+          <div className="details-header">
+            <h1 className="details-heading">
               {category === "movie" ? movie.title : movie.name}
               {"\u00A0"}
               <span className={getColor(movie.vote_average)}>
@@ -86,7 +89,7 @@ const Catalog = () => {
               </span>
             </h1>
 
-            <div className="catalog-genres">
+            <div className="details-genres">
               {movie.genres ? (
                 movie.genres.map((genre) => (
                   <GenreBox
@@ -109,9 +112,9 @@ const Catalog = () => {
               <h2 className="no-results">{movie.status_message}</h2>
             </div>
           ) : (
-            <div className="catalog-container">
-              <section className="catalog-info">
-                <div className="catalog-poster">
+            <div className="details-container">
+              <section className="details-info">
+                <div className="details-poster">
                   {category === "movie" ? (
                     <img
                       class="poster"
@@ -134,7 +137,7 @@ const Catalog = () => {
                     />
                   )}
                 </div>
-                <div className="catalog-desc">
+                <div className="details-desc">
                   {movie.overview ? (
                     <p>{movie.overview}</p>
                   ) : (
@@ -157,14 +160,14 @@ const Catalog = () => {
                     )}
                   </p>
                   <br />
-                  <div className="catalog-crews">
+                  <div className="details-crews">
                     <ol>
                       {crews ? (
                         crews.map((people) =>
                           people.job === "Screenplay" ||
                           people.job === "Director" ||
                           people.job === "Characters" ? (
-                            <li className="catalog-crew">
+                            <li className="details-crew">
                               <h4>{people.name}</h4>
                               <h5>({people.job})</h5>
                               <br />
@@ -182,51 +185,15 @@ const Catalog = () => {
               </section>
 
               <section>
-                <h2 className="catalog-heading">Casts</h2>
+                <h2 className="details-heading">Casts</h2>
                 <br />
-                <Swiper
-                  pagination={{
-                    type: "progressbar",
-                  }}
-                  slidesPerView="auto"
-                  modules={[Pagination, Navigation]}
-                  className="catalog-casts"
-                  breakpoints={{
-                    425: {
-                      slidesPerView: 2,
-                    },
-                    768: {
-                      slidesPerView: 4,
-                    },
-                    1024: {
-                      slidesPerView: 5,
-                    },
-                    1400: {
-                      slidesPerView: 6,
-                    },
-                  }}
-                >
-                  {casts ? (
-                    casts.map((people) => (
-                      <SwiperSlide>
-                        <li className="catalog-cast">
-                          <img
-                            src={
-                              people.profile_path
-                                ? IMG_URL_W200 + people.profile_path
-                                : "https://via.placeholder.com/200x300"
-                            }
-                            alt=""
-                          />
-                          <h4>{people.name}</h4>
-                          <h5>({people.character})</h5>
-                        </li>
-                      </SwiperSlide>
-                    ))
-                  ) : (
-                    <></>
-                  )}
-                </Swiper>
+                <CastCards casts={casts} />
+              </section>
+
+              <section>
+                <h2 className="details-heading">Videos</h2>
+                <br />
+                <VideoCards videos={videos} />
               </section>
             </div>
           )}
@@ -236,4 +203,4 @@ const Catalog = () => {
   );
 };
 
-export default Catalog;
+export default Details;

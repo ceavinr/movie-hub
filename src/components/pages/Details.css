@@ -1,4 +1,4 @@
-.catalog-page {
+.details-page {
   padding: 30px 0;
 }
 
@@ -11,22 +11,22 @@
   z-index: -1;
 }
 
-.catalog-header {
+.details-header {
   margin: -600px 5% 30px 5%;
   display: grid;
   grid-template-rows: 1fr auto;
 }
 
-.catalog-heading{
+.details-heading{
   display: flex;
   flex-wrap: wrap;
 }
 
-.catalog-container {
+.details-container {
   margin: 0 5% 30px 5%;
 }
 
-.catalog-header span{
+.details-header span{
   bottom: 0;
   border: 2px solid;
   padding: 0.25rem 0.5rem;
@@ -36,17 +36,17 @@
   font-size: 25px;
 }
 
-.catalog-header span.green{
+.details-header span.green{
   color: rgb(50, 219, 50);
   border-color: rgb(50, 219, 50);
 }
 
-.catalog-header span.yellow{
+.details-header span.yellow{
   color: yellow;
   border-color: yellow;
 }
 
-.catalog-header span.red{
+.details-header span.red{
   color: red;
   border-color: red;
 }
@@ -56,7 +56,7 @@
   border-radius: 50px;
 }
 
-.catalog-info {
+.details-info {
   color: var(--secondary);
   font-size: 25px;
   display: grid;
@@ -68,34 +68,34 @@
   display: flex;
 }
 
-.catalog-genres {
+.details-genres {
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
 }
 
-.catalog-cast > img {
+.details-cast > img {
   border-radius: 20px;
 }
 
-.catalog-crews > ol{
+.details-crews > ol{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
 /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
 @media screen and (max-width: 1024px) {
-  .catalog-heading {
+  .details-heading {
     font-size: 300%;
   }
-  .catalog-heading > span {
+  .details-heading > span {
     font-size: 50%;
   }
-  .catalog-cast > img  {
+  .details-cast > img  {
     width: 120px;
   }
 
-  .catalog-info {
+  .details-info {
     font-size: 100%;
   }
 
@@ -106,18 +106,18 @@
 
 /* ============= MEDIA QUERIES (SMALLER DEVICES) ============= */ 
 @media (max-width: 768px) {
-  .catalog-info {
+  .details-info {
     grid-template-columns: 1fr;
   }
 
-  .catalog-info {
+  .details-info {
     font-size: 150%;
   }
-  .catalog-poster {
+  .details-poster {
     display: flex;
     justify-content: center;
   }
-  .catalog-crew > h4, .catalog-crew > h5{
+  .details-crew > h4, .details-crew > h5{
     font-size: 70%;
   }
 
@@ -125,10 +125,10 @@
 
 /* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
 @media screen and (max-width: 600px) {
-  .catalog-page {
+  .details-page {
     margin: 2rem;
   }
-  .catalog-info {
+  .details-info {
     font-size: 90%;
   }
   .poster  {
@@ -136,14 +136,14 @@
     align-self: center;
     border-radius: 10px;
   }
-  .catalog-heading {
+  .details-heading {
     font-size: 150%;
     width: 90%;
   }
-  .catalog-cast > h4, .catalog-cast > h5{
+  .details-cast > h4, .details-cast > h5{
     font-size: 80%;
   }
-  .catalog-genre {
+  .details-genre {
     font-size: 80%;
     padding: 0.5rem 1rem;
     margin-right: 0.5rem;

@@ -1,0 +1,15 @@
+iframe {
+    width: 100%;
+    aspect-ratio: 853/480;
+    padding-bottom: 2.5rem  ;
+}
+
+.swiper-pagination-bullet {
+    background: var(--white);
+    z-index: 2;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+    padding-bottom: 2.5rem  ;
+    color: var(--white);
+}
