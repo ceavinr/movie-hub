@@ -11,8 +11,7 @@ function Movies() {
   const [active, setActive] = useState([]);
   const [results, setResults] = useState([]);
   const [genres, setGenres] = useState([]);
-
-  const movies = [];
+  const [movies, setMovies] = useState([]);
 
   // Genre list
   useEffect(() => {
@@ -22,6 +21,20 @@ function Movies() {
         setGenres(genres_data.genres);
       });
   }, []);
+
+  // Default
+  useEffect(() => {
+    fetch(`${apiConfig.movie.POPULAR_URL}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.errors) {
+          console.log(active);
+          setMovies(data.results);
+        } else {
+          setMovies([]);
+        }
+      });
+  }, [active]);
 
   // Movie filtered by genre(s)
   useEffect(() => {
@@ -76,7 +89,6 @@ function Movies() {
     <>
       <div className="background">
         <img src={bg} alt="" />
-
         <div className="container">
           <div className="movie-page">
             <div className="header">
@@ -114,9 +126,13 @@ function Movies() {
 
             {results.length > 0 ? (
               <>
-                <h2 className="movie-count">
-                  Showing all results for '{query}'
-                </h2>
+                {query.length > 0 ? (
+                  <h2 className="movie-count">
+                    Showing all results for '{query}'
+                  </h2>
+                ) : (
+                  <></>
+                )}
 
                 <div className="movie-container">
                   {results.map((movie) => (
@@ -128,7 +144,8 @@ function Movies() {
                   ))}
                 </div>
               </>
-            ) : (results.length === 0) & (query.length > 0) ? (
+            ) : (results.length === 0) & (query.length > 0) ||
+              (results.length === 0 && active.length > 0) ? (
               <>
                 <h2 className="movie-count">
                   Showing all results for '{query}'

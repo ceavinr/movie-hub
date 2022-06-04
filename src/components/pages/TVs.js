@@ -11,8 +11,7 @@ function TVs() {
   const [active, setActive] = useState([]);
   const [results, setResults] = useState([]);
   const [genres, setGenres] = useState([]);
-
-  const movies = [];
+  const [movies, setMovies] = useState([]);
 
   // Genre list
   useEffect(() => {
@@ -22,6 +21,20 @@ function TVs() {
         setGenres(genres_data.genres);
       });
   }, []);
+
+  // Default
+  useEffect(() => {
+    fetch(`${apiConfig.tv.POPULAR_URL}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.errors) {
+          console.log(active);
+          setMovies(data.results);
+        } else {
+          setMovies([]);
+        }
+      });
+  }, [active]);
 
   // Movie filtered by genre(s)
   useEffect(() => {
@@ -113,9 +126,13 @@ function TVs() {
 
             {results.length > 0 ? (
               <>
-                <h2 className="movie-count">
-                  Showing all results for '{query}'
-                </h2>
+                {query.length > 0 ? (
+                  <h2 className="movie-count">
+                    Showing all results for '{query}'
+                  </h2>
+                ) : (
+                  <></>
+                )}
 
                 <div className="movie-container">
                   {results.map((movie) => (
@@ -127,7 +144,8 @@ function TVs() {
                   ))}
                 </div>
               </>
-            ) : (results.length === 0) & (query.length > 0) ? (
+            ) : (results.length === 0) & (query.length > 0) ||
+              (results.length === 0 && active.length > 0) ? (
               <>
                 <h2 className="movie-count">
                   Showing all results for '{query}'
