@@ -18,6 +18,7 @@ import Search from "../Search";
 function Movies() {
   const [active, setActive] = useState([]);
   const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(500);
   const [results, setResults] = useState([]);
   const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
@@ -40,6 +41,7 @@ function Movies() {
           setMovies(data.results);
         } else {
           setMovies([]);
+          setMaxPage(1);
         }
       });
   }, [active]);
@@ -55,20 +57,28 @@ function Movies() {
       .then((data) => {
         if (!data.errors) {
           setResults(data.results);
+          if (data.total_pages > 500) {
+            setMaxPage(500);
+          } else if (data.total_pages === 0) {
+            setMaxPage(1);
+          } else {
+            setMaxPage(data.total_pages);
+          }
         } else {
           setResults([]);
+          setMaxPage(500);
         }
       });
   }, [active, page]);
 
   const onPreviousPage = () => {
     if (page === 1) {
-      setPage(500);
+      setPage(maxPage);
     } else setPage(page - 1);
   };
 
   const onNextPage = () => {
-    if (page === 500) {
+    if (page === maxPage) {
       setPage(1);
     } else {
       setPage(page + 1);
@@ -89,7 +99,6 @@ function Movies() {
       setActive([...active, e.target.value]);
     } else {
       e.target.classList.remove("active");
-
       setActive(active.filter((genreid) => !genreid.includes(e.target.value)));
     }
     setPage(1);
@@ -134,7 +143,7 @@ function Movies() {
                   <i class="fa-solid fa-arrow-left"></i>
                 </button>
                 <h2 className="page-fraction">
-                  {"\u00A0"}Page {page}/{500}
+                  {"\u00A0"}Page {page}/{maxPage}
                   {"\u00A0"}
                   {"\u00A0"}
                 </h2>
