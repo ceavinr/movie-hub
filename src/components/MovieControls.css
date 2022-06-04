@@ -10,14 +10,12 @@
   width: 100%;
 }
 
-
 .ctrl-btn {
   color: #fefefe;
   background-color: transparent;
   border: none;
   transition: all 0.3s ease;
   font-size: 1.25rem;
-  padding: 5px;
 }
 
 .ctrl-btn:hover {
@@ -53,3 +51,8 @@
 }
 
 
+@media (max-width: 1024px) {
+  .ctrl-btn {
+    font-size: 18px;
+  }
+}

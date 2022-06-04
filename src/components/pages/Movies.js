@@ -5,10 +5,20 @@ import Movie from "../MovieCard";
 import GenreBox from "../GenreBox";
 import apiConfig from "../../api/apiConfig";
 import bg from "../../assets/bg.jpg";
+import Search from "../Search";
+
+// const operation = (list1, list2, isUnion = false) =>
+//   list1.filter(
+//     (
+//       (set) => (a) =>
+//         isUnion === set.has(a.id)
+//     )(new Set(list2.map((b) => b.id)))
+//   );
 
 function Movies() {
-  const [query, setQuery] = useState("");
   const [active, setActive] = useState([]);
+  const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
   const [results, setResults] = useState([]);
   const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
@@ -28,8 +38,8 @@ function Movies() {
       .then((res) => res.json())
       .then((data) => {
         if (!data.errors) {
-          console.log(active);
           setMovies(data.results);
+          setMaxPage(data.total_pages);
         } else {
           setMovies([]);
         }
@@ -41,35 +51,36 @@ function Movies() {
     fetch(
       `${
         apiConfig.movie.DISCOVER_GENRE_URL
-      }${active.toString()}&api_key=9fee2dfca9fac3b1049c2bca2752291c`
+      }${active.toString()}&api_key=9fee2dfca9fac3b1049c2bca2752291c&page=${page}`
     )
       .then((res) => res.json())
       .then((data) => {
         if (!data.errors) {
-          console.log(active);
           setResults(data.results);
         } else {
           setResults([]);
         }
       });
-  }, [active]);
+  }, [active, page]);
 
-  // Movie filtered by search
-  const onChange = (e) => {
-    e.preventDefault();
-
-    setQuery(e.target.value);
-
-    fetch(`${apiConfig.movie.SEARCH_URL}&query=${e.target.value}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.errors) {
-          setResults(data.results);
-        } else {
-          setResults([]);
-        }
-      });
+  const onPreviousPage = () => {
+    if (page === 1) {
+      setPage(1);
+    } else setPage(page - 1);
   };
+
+  const onNextPage = () => {
+    if (page === maxPage) {
+      setPage(maxPage);
+    } else {
+      setPage(page + 1);
+    }
+  };
+
+  // results.push(...operation(results2, results1, true));
+  // console.log("genre", results1);
+  // console.log("search", results2);
+  // console.log("all", results);
 
   const onClick = (e) => {
     e.preventDefault();
@@ -83,6 +94,7 @@ function Movies() {
 
       setActive(active.filter((genreid) => !genreid.includes(e.target.value)));
     }
+    setPage(1);
   };
 
   return (
@@ -114,20 +126,21 @@ function Movies() {
             </div>
 
             <div className="add-content">
-              <div className="input-wrapper">
-                <input
-                  type="text"
-                  placeholder="Search movie"
-                  value={query}
-                  onChange={onChange ? (e) => onChange(e) : null}
-                />
+              <Search
+                genres={genres}
+                card_type={"non-watchlist-movie-card"}
+                type={"movie"}
+              />
+              <div className="button-wrapper">
+                <button className="left-arrow-button" onClick={onPreviousPage}>
+                  <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button className="right-arrow-button" onClick={onNextPage}>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
               </div>
             </div>
-            {query.length > 0 ? (
-              <h2 className="movie-count">Showing all results for '{query}'</h2>
-            ) : (
-              <></>
-            )}
+
             {results.length > 0 ? (
               <div className="movie-container">
                 {results.map((movie) => (
@@ -138,8 +151,7 @@ function Movies() {
                   />
                 ))}
               </div>
-            ) : (results.length === 0 && query.length > 0) ||
-              (results.length === 0 && active.length > 0) ? (
+            ) : results.length === 0 && active.length > 0 ? (
               <h2 className="no-results">No results</h2>
             ) : (
               <div className="movie-container">

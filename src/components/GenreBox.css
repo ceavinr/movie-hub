@@ -29,6 +29,13 @@
     .movie-genre {
         margin-right: 5px;
         padding: 0.2rem 0.6rem;
-        font-size: 80%;
+        font-size: 150%;
+    }    
+}
+
+/* ============= MEDIA QUERIES (SMALLER DEVICES) ============= */ 
+@media screen and (max-width: 768px) {
+    .movie-genre {
+        font-size: 100%;
     }    
 }

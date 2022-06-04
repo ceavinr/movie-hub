@@ -1,0 +1,21 @@
+.search-container {
+    width: 100%;
+    position: relative;
+    color: white;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.search-results {
+    position: absolute;
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 80%);
+    z-index: 2;
+    width: 100%;
+    margin: 0.5rem 0 0.5rem;
+    border-radius: 10px;
+}
+
+
+

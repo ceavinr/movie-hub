@@ -1,6 +1,5 @@
 import React from "react";
 import "./VideoCards.css";
-import Moment from "react-moment";
 
 // import Swiper core and required modules
 import { Pagination, Autoplay, Navigation } from "swiper";
