@@ -107,7 +107,10 @@
   .button-wrapper > button {
     font-size: 100%;
     width: 90px;
-}   
+  }   
+.page-fraction {
+  font-size: 150%;
+}
 }
 /* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
 @media screen and (max-width: 600px) {
@@ -116,5 +119,11 @@
     font-size: smaller;
     padding-left: 15px;
   }
-  
+  .page-fraction {
+    font-size: 100%;
+  }
+  .button-wrapper > button {
+    font-size: 50%;
+    width: 50px;
+  }   
 }

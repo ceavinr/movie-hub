@@ -18,7 +18,6 @@ import Search from "../Search";
 function Movies() {
   const [active, setActive] = useState([]);
   const [page, setPage] = useState(1);
-  const [maxPage, setMaxPage] = useState(1);
   const [results, setResults] = useState([]);
   const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
@@ -39,7 +38,6 @@ function Movies() {
       .then((data) => {
         if (!data.errors) {
           setMovies(data.results);
-          setMaxPage(data.total_pages);
         } else {
           setMovies([]);
         }
@@ -65,13 +63,13 @@ function Movies() {
 
   const onPreviousPage = () => {
     if (page === 1) {
-      setPage(1);
+      setPage(500);
     } else setPage(page - 1);
   };
 
   const onNextPage = () => {
-    if (page === maxPage) {
-      setPage(maxPage);
+    if (page === 500) {
+      setPage(1);
     } else {
       setPage(page + 1);
     }
@@ -135,6 +133,11 @@ function Movies() {
                 <button className="left-arrow-button" onClick={onPreviousPage}>
                   <i class="fa-solid fa-arrow-left"></i>
                 </button>
+                <h2 className="page-fraction">
+                  {"\u00A0"}Page {page}/{500}
+                  {"\u00A0"}
+                  {"\u00A0"}
+                </h2>
                 <button className="right-arrow-button" onClick={onNextPage}>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
