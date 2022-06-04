@@ -123,35 +123,24 @@ function TVs() {
                 />
               </div>
             </div>
-
+            {query.length > 0 ? (
+              <h2 className="movie-count">Showing all results for '{query}'</h2>
+            ) : (
+              <></>
+            )}
             {results.length > 0 ? (
-              <>
-                {query.length > 0 ? (
-                  <h2 className="movie-count">
-                    Showing all results for '{query}'
-                  </h2>
-                ) : (
-                  <></>
-                )}
-
-                <div className="movie-container">
-                  {results.map((movie) => (
-                    <Movie
-                      card_type={"non-watchlist-tv"}
-                      movie={movie}
-                      key={movie.id}
-                    />
-                  ))}
-                </div>
-              </>
-            ) : (results.length === 0) & (query.length > 0) ||
+              <div className="movie-container">
+                {results.map((movie) => (
+                  <Movie
+                    card_type={"non-watchlist-tv"}
+                    movie={movie}
+                    key={movie.id}
+                  />
+                ))}
+              </div>
+            ) : (results.length === 0 && query.length > 0) ||
               (results.length === 0 && active.length > 0) ? (
-              <>
-                <h2 className="movie-count">
-                  Showing all results for '{query}'
-                </h2>
-                <h2 className="no-results">No results</h2>
-              </>
+              <h2 className="no-results">No results</h2>
             ) : (
               <div className="movie-container">
                 {movies.map((movie) => (
