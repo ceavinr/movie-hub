@@ -94,7 +94,7 @@ function Movie({ movie, card_type }) {
 
       <div className="movie-list">
         <MovieControls type={card_type} movie={movie} />
-        <div className="movie-list-img-container">
+        <div className="movie-list-content" onClick={toggleModal}>
           {movie.title ? (
             <img
               className="movie-list-img"
@@ -104,7 +104,6 @@ function Movie({ movie, card_type }) {
                   : "http://via.placeholder.com/1080x1580"
               }
               alt={movie.title}
-              onClick={toggleModal}
             />
           ) : (
             <img
@@ -118,16 +117,16 @@ function Movie({ movie, card_type }) {
               onClick={toggleModal}
             />
           )}
-        </div>
-        <div className="movie-list-info">
-          {movie.title ? (
-            <h3 className="movie-list-title">{movie.title}</h3>
-          ) : (
-            <h3 className="movie-list-title">{movie.name}</h3>
-          )}
-          <span className={getColor(movie.vote_average)}>
-            <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
-          </span>
+          <div className="movie-list-info">
+            {movie.title ? (
+              <h3 className="movie-list-title">{movie.title}</h3>
+            ) : (
+              <h3 className="movie-list-title">{movie.name}</h3>
+            )}
+            <span className={getColor(movie.vote_average)}>
+              <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
+            </span>
+          </div>
         </div>
       </div>
     </div>
