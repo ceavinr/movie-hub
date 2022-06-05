@@ -5,8 +5,8 @@ import Moment from "react-moment";
 import "./Details.css";
 
 import GenreBox from "../GenreBox";
-import CastCards from "../CastCards";
 import VideoCards from "../VideoCards";
+import SwiperCards from "../SwiperCards";
 
 function getColor(vote) {
   if (vote >= 8) {
@@ -57,7 +57,6 @@ const Details = () => {
     });
   }, [VIDEOS_URL]);
 
-  console.log(videos);
   return (
     <>
       {Object.keys(movie).length !== 3 ? (
@@ -187,7 +186,7 @@ const Details = () => {
               <section>
                 <h2 className="details-heading">Casts</h2>
                 <br />
-                <CastCards casts={casts} />
+                <SwiperCards cards={casts} nav="people" cast={true} />
               </section>
 
               <section>

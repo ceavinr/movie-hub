@@ -51,6 +51,9 @@
   border-color: red;
 }
 
+.details-poster {
+  width: 100%;
+}
 .poster {
   width: 500px;
   border-radius: 50px;
@@ -64,6 +67,50 @@
   gap: 1rem;
 }
 
+.details-people-info {
+  color: var(--secondary);
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+}
+
+.swiper-wrapper {
+  padding: 1.05%;
+}
+
+.details-cast {
+  display: flex;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: 1px dotted;
+  outline-offset: -8px ;
+  box-shadow: 3px 3px 10px rgba(0,0,0,.1);
+  position: relative;
+}
+
+.details-cast > img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .6;
+  transition: transform .5s;
+}
+
+.details-cast:hover img {
+  transform: scale(1.05);
+}
+
+.card-text {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  font-size: 15px;
+  text-shadow: 0 0 1px rgba(0,0,0,.5);
+  padding-right: 15px;
+}
+
 .swiper-container {
   display: flex;
 }
@@ -74,10 +121,6 @@
   flex-wrap: wrap;
 }
 
-.details-cast > img {
-  border-radius: 20px;
-}
-
 .details-crews > ol{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -85,22 +128,40 @@
 
 /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
 @media screen and (max-width: 1024px) {
-  .details-heading {
+  section > h1 {
     font-size: 300%;
   }
   .details-heading > span {
     font-size: 50%;
   }
-  .details-cast > img  {
-    width: 120px;
+  .details-people-info {
+    color: var(--secondary);
+    display: block;
+    font-size: 20px;
   }
-
+  .details-people-info .details-poster{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  .poster{
+    width: 70%;
+  }
   .details-info {
     font-size: 100%;
   }
-
-  .poster {
-    width: 100%;
+  .details-bio {
+    font-size: 20px;
+  }
+  .card-text h4{
+    font-size: 90%;
+  }
+  .card-text h5{
+    font-size: 70%;
+  }
+  section > h3 {
+    font-size: 25px;
   }
 }
 
@@ -112,10 +173,6 @@
 
   .details-info {
     font-size: 150%;
-  }
-  .details-poster {
-    display: flex;
-    justify-content: center;
   }
   .details-crew > h4, .details-crew > h5{
     font-size: 70%;
@@ -131,21 +188,33 @@
   .details-info {
     font-size: 90%;
   }
+  .details-bio {
+    font-size: 80%;
+  }
   .poster  {
-    width: 70%;
-    align-self: center;
     border-radius: 10px;
   }
-  .details-heading {
-    font-size: 150%;
-    width: 90%;
+  .details-header > h1 {
+    font-size: 300%;
   }
   .details-cast > h4, .details-cast > h5{
     font-size: 80%;
+  }
+  .details-cast img {
+    width: 100%;
   }
   .details-genre {
     font-size: 80%;
     padding: 0.5rem 1rem;
     margin-right: 0.5rem;
+  }
+}
+/* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
+@media screen and (max-width: 450px) {
+  .details-header > h1 {
+    font-size: 200%;
+  }
+  .details-bio{
+    font-size: 13px;
   }
 }

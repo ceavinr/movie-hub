@@ -7,6 +7,7 @@ import TVs from "../components/pages/TVs";
 import Details from "../components/pages/Details";
 import Genres from "../components/pages/Genres";
 import NowShowing from "../components/pages/NowShowing";
+import Person from "../components/pages/Person";
 
 const RoutesConfig = () => {
   return (
@@ -18,6 +19,7 @@ const RoutesConfig = () => {
       <Route path="/tv" element={<TVs />} />
       <Route path="/:category/genres/:genre" element={<Genres />} />
       <Route path="/:category/:id" element={<Details />} />
+      <Route path="/people/:id" element={<Person />} />
       <Route path="*" element={<Home />} />
     </Routes>
   );

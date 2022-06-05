@@ -9,6 +9,7 @@ current.setDate(current.getDate() - 21);
 var previousMonth = format(current, "yyyy-MM-dd");
 
 const apiConfig = {
+  people: { PEOPLE_URL: BASE_URL + "/person/" },
   movie: {
     POPULAR_URL:
       BASE_URL + "/discover/movie?sort_by=popularity.desc&" + API_KEY,

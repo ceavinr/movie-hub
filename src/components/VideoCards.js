@@ -28,29 +28,26 @@ const VideoCards = ({ videos }) => {
       {videos ? (
         videos.map((video) => (
           <li className="details-video">
-            <SwiperSlide>
-              {video.site === "YouTube" ? (
+            {video.site === "YouTube" ? (
+              <SwiperSlide>
                 <div>
                   <iframe
-                    src={"https://www.youtube.com/embed/" + video.key}
-                    frameborder="0"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen
-                    title="video"
-                  />
+                    width="853"
+                    height="450"
+                    type="text/html"
+                    title={video.title}
+                    allowFullScreen
+                    src={
+                      "https://www.youtube.com/embed/" +
+                      video.key +
+                      "?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=1&start=0&end=0&vq=hd1080&origin=http://youtubeembedcode.com"
+                    }
+                  ></iframe>
                 </div>
-              ) : video.site === "Vimeo" ? (
-                <iframe
-                  src="https://player.vimeo.com/video/375973906?h=57b1f7c3b0"
-                  title="video"
-                  frameborder="0"
-                  allow="autoplay; encrypted-media"
-                  allowfullscreen
-                ></iframe>
-              ) : (
-                <></>
-              )}
-            </SwiperSlide>
+              </SwiperSlide>
+            ) : (
+              <></>
+            )}
           </li>
         ))
       ) : (

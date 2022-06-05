@@ -1,5 +1,7 @@
 iframe {
-    width: 100%;
+    width: 80%;
+    display: block;
+    margin: auto;
     aspect-ratio: 853/480;
     padding-bottom: 2.5rem  ;
 }
