@@ -7,6 +7,15 @@ import "./Details.css";
 import GenreBox from "../GenreBox";
 import VideoCards from "../VideoCards";
 import SwiperCards from "../SwiperCards";
+import Movie from "../MovieCard";
+
+// import Swiper core and required modules
+import { Pagination, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
+
+// Import Swiper styles
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
 
 function getColor(vote) {
   if (vote >= 8) {
@@ -18,6 +27,7 @@ function getColor(vote) {
   }
 }
 const IMG_URL_ORIGINAL = "https://image.tmdb.org/t/p/original";
+const IMG_URL_W10 = "https://image.tmdb.org/t/p/w200";
 
 const requestData = (URL) => fetch(URL).then((res) => res.json());
 
@@ -25,14 +35,19 @@ const Details = () => {
   const { category, id } = useParams();
   const navigate = useNavigate();
 
-  const MOVIE_URL = BASE_URL + `/${category}/${id}?` + API_KEY;
-  const CREDITS_URL = BASE_URL + `/${category}/${id}/credits?` + API_KEY;
-  const VIDEOS_URL = BASE_URL + `/${category}/${id}/videos?` + API_KEY;
-
   const [movie, setMovie] = useState([]);
+  const [parts, setParts] = useState([]);
   const [casts, setCasts] = useState([]);
   const [crews, setCrews] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
+  const [similar, setSimilar] = useState([]);
+
+  const MOVIE_URL = `${BASE_URL}/${category}/${id}?${API_KEY}`;
+  const CREDITS_URL = `${BASE_URL}/${category}/${id}/credits?${API_KEY}`;
+  const VIDEOS_URL = `${BASE_URL}/${category}/${id}/videos?${API_KEY}`;
+  const SIMILAR_URL = `${BASE_URL}/${category}/${id}/similar?${API_KEY}`;
+  const RECOMMENDATION_URL = `${BASE_URL}/${category}/${id}/recommendations?${API_KEY}`;
 
   useEffect(() => {
     requestData(MOVIE_URL).then((movie_data) => {
@@ -40,8 +55,36 @@ const Details = () => {
         // console.log(movie_data);
         setMovie(movie_data);
       }
+      if (movie_data.belongs_to_collection) {
+        requestData(
+          `${BASE_URL}/collection/${movie_data.belongs_to_collection.id}?${API_KEY}`
+        ).then((collection_data) => {
+          if (collection_data.parts.length !== 0) {
+            // console.log(collection_data.parts);
+            setParts(collection_data.parts);
+          }
+        });
+      }
     });
   }, [MOVIE_URL]);
+
+  useEffect(() => {
+    requestData(SIMILAR_URL).then((similar_data) => {
+      if (similar_data.results) {
+        // console.log(similar_data);
+        setSimilar(similar_data.results);
+      }
+    });
+  }, [SIMILAR_URL]);
+
+  useEffect(() => {
+    requestData(RECOMMENDATION_URL).then((recommendations_data) => {
+      if (recommendations_data.results) {
+        // console.log(recommendations_data);
+        setRecommendations(recommendations_data.results);
+      }
+    });
+  }, [RECOMMENDATION_URL]);
 
   useEffect(() => {
     requestData(CREDITS_URL).then((credits_data) => {
@@ -56,6 +99,8 @@ const Details = () => {
       setVideos(videos_data.results);
     });
   }, [VIDEOS_URL]);
+  console.log(similar);
+  console.log(recommendations);
 
   return (
     <>
@@ -103,6 +148,21 @@ const Details = () => {
                 <></>
               )}
             </div>
+            {/* <div className="details-companies">
+              {movie.production_companies ? (
+                movie.production_companies.map((company) => (
+                  <>
+                    <img
+                      className="company-img"
+                      src={IMG_URL_W10 + company.logo_path}
+                    />
+                    <h3 className="movie-company">{company.name}</h3>
+                  </>
+                ))
+              ) : (
+                <></>
+              )}
+            </div> */}
           </div>
 
           {Object.keys(movie).length === 3 ? (
@@ -184,6 +244,50 @@ const Details = () => {
               </section>
 
               <section>
+                {movie.belongs_to_collection ? (
+                  <>
+                    <div
+                      className="collection-banner"
+                      style={{
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)), url(${
+                          movie.belongs_to_collection.backdrop_path
+                            ? IMG_URL_ORIGINAL +
+                              movie.belongs_to_collection.backdrop_path
+                            : "https://via.placeholder.com/2000x3000"
+                        })`,
+                      }}
+                    >
+                      <h2>Part of the {movie.belongs_to_collection.name}</h2>
+                      <h4>
+                        Includes{" "}
+                        {parts
+                          ? parts
+                              .map((part) => part.title)
+                              .filter((name) =>
+                                parts.length > 3 ? name !== movie.title : true
+                              )
+                              .slice(0, 3)
+                              .join(", ")
+                          : ""}
+                      </h4>
+
+                      <button
+                        className="collection-banner-button"
+                        onClick={() =>
+                          navigate(
+                            "/collection/" + movie.belongs_to_collection.id
+                          )
+                        }
+                      >
+                        View Collection
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </section>
+              <section>
                 <h2 className="details-heading">Casts</h2>
                 <br />
                 <SwiperCards cards={casts} nav="people" cast={true} />
@@ -193,6 +297,91 @@ const Details = () => {
                 <h2 className="details-heading">Videos</h2>
                 <br />
                 <VideoCards videos={videos} />
+              </section>
+
+              <section>
+                <h2 className="details-heading">Recommendation</h2>
+                <Swiper
+                  pagination={{
+                    type: "progressbar",
+                  }}
+                  slidesPerView="auto"
+                  spaceBetween={20}
+                  modules={[Pagination, Navigation]}
+                  className="collection-movies"
+                  breakpoints={{
+                    425: {
+                      slidesPerView: 1,
+                    },
+                    625: {
+                      slidesPerView: 2,
+                    },
+                    960: {
+                      slidesPerView: 3,
+                    },
+                    1400: {
+                      slidesPerView: 4,
+                    },
+                  }}
+                >
+                  {recommendations.length > 0 ? (
+                    recommendations.map((movie) => (
+                      <SwiperSlide>
+                        <Movie
+                          card_type={"non-watchlist"}
+                          movie={movie}
+                          key={movie.id}
+                          collection="collection"
+                        />
+                      </SwiperSlide>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </Swiper>
+              </section>
+
+              <section>
+                <h2 className="details-heading">Similar</h2>
+
+                <Swiper
+                  pagination={{
+                    type: "progressbar",
+                  }}
+                  slidesPerView="auto"
+                  spaceBetween={20}
+                  modules={[Pagination, Navigation]}
+                  className="collection-movies"
+                  breakpoints={{
+                    425: {
+                      slidesPerView: 1,
+                    },
+                    625: {
+                      slidesPerView: 2,
+                    },
+                    960: {
+                      slidesPerView: 3,
+                    },
+                    1400: {
+                      slidesPerView: 4,
+                    },
+                  }}
+                >
+                  {similar.length > 0 ? (
+                    similar.map((movie) => (
+                      <SwiperSlide>
+                        <Movie
+                          card_type={"non-watchlist"}
+                          movie={movie}
+                          key={movie.id}
+                          collection="collection"
+                        />
+                      </SwiperSlide>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </Swiper>
               </section>
             </div>
           )}

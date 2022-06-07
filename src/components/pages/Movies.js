@@ -134,7 +134,7 @@ function Movies() {
 
             <div className="add-content">
               <Search
-                genres={genres}
+                items={genres}
                 card_type={"non-watchlist-movie-card"}
                 type={"movie"}
               />
@@ -157,9 +157,10 @@ function Movies() {
               <div className="movie-container">
                 {results.map((movie) => (
                   <Movie
-                    card_type={"non-watchlist-movie"}
+                    card_type={"non-watchlist"}
                     movie={movie}
                     key={movie.id}
+                    collection="-movie"
                   />
                 ))}
               </div>
@@ -171,7 +172,8 @@ function Movies() {
                   <Movie
                     movie={movie}
                     key={movie.id}
-                    card_type={"non-watchlist-movie"}
+                    card_type={"non-watchlist"}
+                    collection="-movie"
                   />
                 ))}
               </div>

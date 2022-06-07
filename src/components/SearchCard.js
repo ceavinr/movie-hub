@@ -6,12 +6,12 @@ import "./SearchCard.css";
 
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
-const SearchCard = ({ genres, movie, card_type }) => {
+const SearchCard = ({ items, movie, card_type }) => {
   const [modal, setModal] = useState(false);
 
   function result(array) {
     return array.map(function (id) {
-      return genres.filter((el) => el.id === id)[0].name;
+      return items.filter((el) => el.id === id)[0].name;
     });
   }
   const toggleModal = () => {
@@ -153,7 +153,7 @@ const SearchCard = ({ genres, movie, card_type }) => {
           )}
 
           {movie.genre_ids ? (
-            <div className="result-genres">
+            <div className="result-items">
               {result(movie.genre_ids).join(", ")}
             </div>
           ) : (

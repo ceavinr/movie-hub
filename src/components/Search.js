@@ -3,7 +3,7 @@ import apiConfig from "./../api/apiConfig";
 import "./Search.css";
 import SearchCard from "./SearchCard";
 
-const Search = ({ genres, card_type, type }) => {
+const Search = ({ items, card_type, type }) => {
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState([]);
   const [suggest, setSuggest] = useState([]);
@@ -13,7 +13,7 @@ const Search = ({ genres, card_type, type }) => {
     e.preventDefault();
 
     setQuery(e.target.value);
-    if (type === "movie") {
+    if (type === "movie" && e.target.value.length > 0) {
       fetch(`${apiConfig.movie.SEARCH_URL}&query=${e.target.value}`)
         .then((res) => res.json())
         .then((data) => {
@@ -23,7 +23,7 @@ const Search = ({ genres, card_type, type }) => {
             setSearch([]);
           }
         });
-    } else if (type === "tv") {
+    } else if (type === "tv" && e.target.value.length > 0) {
       fetch(`${apiConfig.tv.SEARCH_URL}&query=${e.target.value}`)
         .then((res) => res.json())
         .then((data) => {
@@ -33,6 +33,8 @@ const Search = ({ genres, card_type, type }) => {
             setSearch([]);
           }
         });
+    } else {
+      setSearch([]);
     }
   };
 
@@ -55,7 +57,7 @@ const Search = ({ genres, card_type, type }) => {
           className="search-input"
           onFocus={() => setSuggest(true)}
           type="text"
-          placeholder="Search movie"
+          placeholder={"Search " + type + "s"}
           value={query}
           onChange={onChange ? (e) => onChange(e) : null}
         />
@@ -65,7 +67,7 @@ const Search = ({ genres, card_type, type }) => {
         (search.length > 0 ? (
           <div className="search-results">
             {search.map((movie) => (
-              <SearchCard genres={genres} card_type={card_type} movie={movie} />
+              <SearchCard items={items} card_type={card_type} movie={movie} />
             ))}
           </div>
         ) : search.length === 0 && query.length > 0 ? (

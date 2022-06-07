@@ -120,12 +120,42 @@
   display: flex;
   flex-wrap: wrap;
 }
-
+.details-companies {
+  display: inline-flex;
+  gap: 10px;
+}
+.movie-company {
+  text-decoration: underline
+}
 .details-crews > ol{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+.collection-banner {
+  border-radius: 10px;
+  position: relative;
+  padding: 100px;
+  background-position: 50% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
+.collection-banner-button {
+  margin: 20px 0.5rem 1rem 0 ;
+  border: 2px solid;
+  background:transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-size: 20px;
+  transition: all 20ms ease-in-out ;
+  cursor: pointer;
+}
+
+.collection-banner-button:active{
+  transform: translateY(4px);
+}
 /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
 @media screen and (max-width: 1024px) {
   section > h1 {

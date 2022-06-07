@@ -46,19 +46,7 @@ export const MovieControls = ({ type, movie }) => {
         </div>
       )}
 
-      {type === "non-watchlist-tv" && (
-        <div className="outer-card-controls">
-          <button
-            className="ctrl-btn"
-            disabled={watchlistDisabled}
-            onClick={() => addMovieToWatchlist(movie)}
-          >
-            <i className="fa-fw fa fa-plus"></i> Add to watchlist
-          </button>
-        </div>
-      )}
-
-      {type === "non-watchlist-movie" && (
+      {type === "non-watchlist" && (
         <div className="outer-card-controls">
           <button
             className="ctrl-btn"

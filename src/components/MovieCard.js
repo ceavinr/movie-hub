@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MovieCard.css";
 import { MovieControls } from "./MovieControls";
 import Moment from "react-moment";
+import { useNavigate, useParams } from "react-router-dom";
 
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -15,8 +16,9 @@ function getColor(vote) {
   }
 }
 
-function Movie({ movie, card_type }) {
+function Movie({ movie, card_type, collection }) {
   const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
 
   const toggleModal = () => {
     setModal(!modal);
@@ -84,7 +86,7 @@ function Movie({ movie, card_type }) {
               <br />
               <MovieControls
                 onClick={toggleModal}
-                type={card_type + "-card"}
+                type={card_type + collection + "-card"}
                 movie={movie}
               />
             </div>
@@ -94,40 +96,78 @@ function Movie({ movie, card_type }) {
 
       <div className="movie-list">
         <MovieControls type={card_type} movie={movie} />
-        <div className="movie-list-content" onClick={toggleModal}>
-          {movie.title ? (
-            <img
-              className="movie-list-img"
-              src={
-                movie.poster_path
-                  ? IMG_URL + movie.poster_path
-                  : "http://via.placeholder.com/1080x1580"
-              }
-              alt={movie.title}
-            />
-          ) : (
-            <img
-              className="movie-list-img"
-              src={
-                movie.poster_path
-                  ? IMG_URL + movie.poster_path
-                  : "http://via.placeholder.com/1080x1580"
-              }
-              alt={movie.name}
-              onClick={toggleModal}
-            />
-          )}
-          <div className="movie-list-info">
+        {collection === "collection" ? (
+          <div
+            className="movie-list-content"
+            onClick={() => navigate("/movie/" + movie.id)}
+          >
             {movie.title ? (
-              <h3 className="movie-list-title">{movie.title}</h3>
+              <img
+                className="movie-list-img"
+                src={
+                  movie.poster_path
+                    ? IMG_URL + movie.poster_path
+                    : "http://via.placeholder.com/1080x1580"
+                }
+                alt={movie.title}
+              />
             ) : (
-              <h3 className="movie-list-title">{movie.name}</h3>
+              <img
+                className="movie-list-img"
+                src={
+                  movie.poster_path
+                    ? IMG_URL + movie.poster_path
+                    : "http://via.placeholder.com/1080x1580"
+                }
+                alt={movie.name}
+              />
             )}
-            <span className={getColor(movie.vote_average)}>
-              <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
-            </span>
+            <div className="movie-list-info">
+              {movie.title ? (
+                <h3 className="movie-list-title">{movie.title}</h3>
+              ) : (
+                <h3 className="movie-list-title">{movie.name}</h3>
+              )}
+              <span className={getColor(movie.vote_average)}>
+                <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
+              </span>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="movie-list-content" onClick={toggleModal}>
+            {movie.title ? (
+              <img
+                className="movie-list-img"
+                src={
+                  movie.poster_path
+                    ? IMG_URL + movie.poster_path
+                    : "http://via.placeholder.com/1080x1580"
+                }
+                alt={movie.title}
+              />
+            ) : (
+              <img
+                className="movie-list-img"
+                src={
+                  movie.poster_path
+                    ? IMG_URL + movie.poster_path
+                    : "http://via.placeholder.com/1080x1580"
+                }
+                alt={movie.name}
+              />
+            )}
+            <div className="movie-list-info">
+              {movie.title ? (
+                <h3 className="movie-list-title">{movie.title}</h3>
+              ) : (
+                <h3 className="movie-list-title">{movie.name}</h3>
+              )}
+              <span className={getColor(movie.vote_average)}>
+                <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
+              </span>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

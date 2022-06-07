@@ -15,7 +15,7 @@
     font-size: 130%;
     text-decoration:underline;
 } 
-.result-genres {
+.result-items{
     display: flex;
 }
 .search-list-poster {
