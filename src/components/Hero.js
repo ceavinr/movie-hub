@@ -1,29 +1,120 @@
 import React from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
 import "./Hero.css";
-import bg from "../assets/bg.jpg";
+import { useNavigate } from "react-router-dom";
 
-function Hero() {
+// import Swiper core and required modules
+import { Pagination, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
+
+// Import Swiper styles
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+
+const IMG_URL_ORIGINAL = "https://image.tmdb.org/t/p/original";
+
+function Hero({ movies, tvs }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="background">
-      <img src={bg} alt="home" />
-      <div className="main-container">
-        <h1>MovieHub</h1>
-        <div className="hero-btns">
-          <div className="home-item">
-            <Link to="/movie" className="home-links">
-              Movies
-            </Link>
-          </div>
-          <div className="home-item">
-            <Link to="/tv" className="home-links">
-              TV Series
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <Swiper
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
+        }}
+        slidesPerView={1}
+        modules={[Pagination, Navigation]}
+        className="home-swiper"
+      >
+        {movies.length > 0 ? (
+          movies.slice(0, 2).map((movie) => (
+            <SwiperSlide>
+              <div
+                className="home-banner"
+                style={{
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)), url(${
+                    movie.backdrop_path
+                      ? IMG_URL_ORIGINAL + movie.backdrop_path
+                      : "https://via.placeholder.com/3840x2160"
+                  })`,
+                }}
+              >
+                <div className="home-info">
+                  <div className="home-desc">
+                    <h1>{movie.title}</h1>
+                    <br />
+                    <h3>{movie.overview}</h3>
+                    <button
+                      className="home-banner-button"
+                      onClick={() => navigate("/movie/" + movie.id)}
+                    >
+                      View Details
+                    </button>
+                  </div>
+                  <div className="home-poster-container">
+                    <img
+                      src={
+                        movie.poster_path
+                          ? IMG_URL_ORIGINAL + movie.poster_path
+                          : "https://via.placeholder.com/2000x3000"
+                      }
+                      alt={movie.title}
+                      className="home-poster"
+                    />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))
+        ) : (
+          <></>
+        )}
+        {tvs.length > 0 ? (
+          tvs.slice(0, 2).map((movie) => (
+            <SwiperSlide>
+              <div
+                className="home-banner"
+                style={{
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)), url(${
+                    movie.backdrop_path
+                      ? IMG_URL_ORIGINAL + movie.backdrop_path
+                      : "https://via.placeholder.com/3840x2160"
+                  })`,
+                }}
+              >
+                <div className="home-info">
+                  <div className="home-desc">
+                    <h1>{movie.name}</h1>
+                    <br />
+                    <h3>{movie.overview}</h3>
+                    <button
+                      className="home-banner-button"
+                      onClick={() => navigate("/tv/" + movie.id)}
+                    >
+                      View Details
+                    </button>
+                  </div>
+                  <div className="home-poster-container">
+                    <img
+                      src={
+                        movie.poster_path
+                          ? IMG_URL_ORIGINAL + movie.poster_path
+                          : "https://via.placeholder.com/2000x3000"
+                      }
+                      alt={movie.name}
+                      className="home-poster"
+                    />
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))
+        ) : (
+          <></>
+        )}
+      </Swiper>
+    </>
   );
 }
 

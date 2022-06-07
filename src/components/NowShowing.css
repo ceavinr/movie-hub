@@ -1,0 +1,15 @@
+.now-showing-page{
+  padding: 30px 0;
+}
+  
+.now-showing-page .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+  
+.now-showing-page .heading {
+  color: var(--secondary);
+  margin: 0;
+}

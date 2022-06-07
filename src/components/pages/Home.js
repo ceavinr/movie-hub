@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../App.css";
 import Hero from "../Hero";
+import NowShowing from "../NowShowing";
+import apiConfig from "../../api/apiConfig";
 
 function Home() {
+  const [tvs, setTvs] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch(`${apiConfig.movie.NOW_SHOWING_URL}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.errors) {
+          setMovies(data.results);
+        } else {
+          setMovies([]);
+        }
+      });
+  }, [movies]);
+
+  useEffect(() => {
+    fetch(`${apiConfig.tv.NOW_SHOWING_URL}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.errors) {
+          setTvs(data.results);
+        } else {
+          setTvs([]);
+        }
+      });
+  }, [movies]);
+
   return (
     <>
-      <Hero />
+      <Hero tvs={tvs} movies={movies} />
+      <NowShowing tvs={tvs} movies={movies} />
     </>
   );
 }

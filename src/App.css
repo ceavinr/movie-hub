@@ -37,6 +37,10 @@ h1 {
   color: var(--secondary);
 }
 
+.header h1 {
+  margin-top: 60px;
+}
+
 h2 {
   font-size: 35px;
   color: var(--secondary);
@@ -58,6 +62,10 @@ h5 {
 li {
   color: var(--secondary);
   list-style: none
+}
+
+p {
+  color: var(--secondary);
 }
 
 section {
