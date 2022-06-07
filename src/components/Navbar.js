@@ -35,11 +35,16 @@ function Navbar() {
       <nav className={navbar ? "navbar active" : "navbar"}>
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            {"\u00a0\u00a0"}
             <i className="fab fa-monero" />
           </Link>
+          <h3 className="navbar-name">
+            {"\u00a0\u00a0"}MovieHub{"\u00a0\u00a0"}
+          </h3>
 
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
+            {"\u00a0\u00a0"}
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">

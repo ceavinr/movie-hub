@@ -4,7 +4,7 @@ import "./Movies.css";
 import Movie from "../MovieCard";
 import GenreBox from "../GenreBox";
 import apiConfig from "../../api/apiConfig";
-import bg from "../../assets/bg.jpg";
+import bg from "../../assets/img-home.jpg";
 import Search from "../Search";
 
 // const operation = (list1, list2, isUnion = false) =>
@@ -107,7 +107,7 @@ function TVs() {
   return (
     <>
       <div className="background">
-        <img src={bg} alt="" />
+        <img className="background-genre-image" src={bg} alt="" />
         <div className="container">
           <div className="movie-page">
             <div className="header">

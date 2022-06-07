@@ -1,3 +1,7 @@
+  .background-genre-image{
+    opacity: 0.25;
+    filter: blur(0px);
+  }
   .movie-page {
     padding: 30px 0;
   }

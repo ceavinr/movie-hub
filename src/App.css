@@ -37,8 +37,8 @@ h1 {
   color: var(--secondary);
 }
 
-.header h1 {
-  margin-top: 60px;
+.header h1, .header h2 {
+  margin-top: 140px;
 }
 
 h2 {

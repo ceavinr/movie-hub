@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import "./Movies.css";
 import Movie from "../MovieCard";
 import apiConfig from "../../api/apiConfig";
-import bg from "../../assets/bg.jpg";
 import { useParams } from "react-router-dom";
+
+const IMG_URL_ORIGINAL = "https://image.tmdb.org/t/p/original";
 
 function Genres() {
   const [results, setResults] = useState([]);
@@ -64,8 +65,15 @@ function Genres() {
   return (
     <>
       <div className="background">
-        <img src={bg} alt="" />
-
+        {results[0] ? (
+          <img
+            className="background-genre-image"
+            src={IMG_URL_ORIGINAL + results[0].backdrop_path}
+            alt=""
+          />
+        ) : (
+          <img src={IMG_URL_ORIGINAL} alt="" />
+        )}
         <div className="container">
           <div className="movie-page">
             {results.length > 0 ? (
@@ -92,9 +100,10 @@ function Genres() {
                 <div className="movie-container">
                   {results.map((movie) => (
                     <Movie
-                      card_type={"non-watchlist-" + category}
+                      card_type={"non-watchlist"}
                       movie={movie}
                       key={movie.id}
+                      collection={"-" + category}
                     />
                   ))}
                 </div>

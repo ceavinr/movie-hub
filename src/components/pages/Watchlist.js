@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Watchlist.css";
 import { GlobalContext } from "../../context/GlobalState";
 import Movie from "../MovieCard";
-import bg from "../../assets/bg.jpg";
+import bg from "../../assets/img-home.jpg";
 
 function Watchlist() {
   const { removeAllFromWatchlist, watchlist } = useContext(GlobalContext);
@@ -10,7 +10,7 @@ function Watchlist() {
   return (
     <>
       <div className="background">
-        <img src={bg} alt="" />
+        <img className="background-genre-image" src={bg} alt="" />
         <div className="container">
           <div className="watchlist-page">
             <div className="header">
