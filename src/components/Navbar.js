@@ -5,14 +5,34 @@ import "./Navbar.css";
 
 function Navbar() {
   const [click, setClick] = useState(false);
+  const [navbar, setNavbar] = useState(false);
+
   const { watchlist } = useContext(GlobalContext);
 
-  const handleClick = () => setClick(!click);
+  const handleClick = () => {
+    setClick(!click);
+    if (window.scrollY <= 80 && !click) {
+      setNavbar(true);
+    } else if (window.scrollY <= 80 && click) {
+      setNavbar(false);
+    }
+  };
   const closeMobileMenu = () => setClick(false);
 
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true);
+    } else if (window.scrollY <= 80 && click) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeBackground);
   return (
     <>
-      <nav className="navbar">
+      <nav className={navbar ? "navbar active" : "navbar"}>
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             <i className="fab fa-monero" />
@@ -27,7 +47,7 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link
                 to="/collection"
                 className="nav-links"
@@ -35,7 +55,7 @@ function Navbar() {
               >
                 Collections
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link
                 to="/watchlist"
