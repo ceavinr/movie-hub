@@ -14,7 +14,7 @@ function Footer() {
         <a
           className="social-icon-link facebook"
           href="https://facebook.com/ceavinrufus3"
-          target="_blank"
+          target="blank"
           aria-label="Facebook"
         >
           <i className="fab fa-facebook-f" />
@@ -22,15 +22,15 @@ function Footer() {
         <a
           className="social-icon-link instagram"
           href="https://instagram.com/ceavinrufus"
-          target="_blank"
+          target="blank"
           aria-label="Instagram"
         >
           <i className="fab fa-instagram" />
         </a>
         <a
           className="social-icon-link twitter"
-          href="https://twitter.com/16521xxx"
-          target="_blank"
+          href="https://twitter.com/ceavinrufus"
+          target="blank"
           aria-label="Twitter"
         >
           <i className="fab fa-twitter" />
@@ -38,7 +38,7 @@ function Footer() {
         <a
           className="social-icon-link twitter"
           href="https://linkedin.com/in/ceavinrufus"
-          target="_blank"
+          target="blank"
           aria-label="LinkedIn"
         >
           <i className="fab fa-linkedin" />
