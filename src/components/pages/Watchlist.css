@@ -8,10 +8,11 @@
     justify-content: center;
     margin-bottom: 10px
   }
+
   .watchlist-page .heading {
     color: var(--secondary);
-    margin: 0;
   }
+  
   .watchlist-header-button {
     position: relative;
     left: 50%;

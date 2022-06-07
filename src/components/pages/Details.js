@@ -27,7 +27,6 @@ function getColor(vote) {
   }
 }
 const IMG_URL_ORIGINAL = "https://image.tmdb.org/t/p/original";
-const IMG_URL_W10 = "https://image.tmdb.org/t/p/w200";
 
 const requestData = (URL) => fetch(URL).then((res) => res.json());
 

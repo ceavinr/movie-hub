@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./MovieCard.css";
 import { MovieControls } from "./MovieControls";
 import Moment from "react-moment";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -77,18 +77,27 @@ function Movie({ movie, card_type, collection }) {
                 />
               )}
               {movie.overview ? (
-                <p>{movie.overview}</p>
+                <p className="card-overview">{movie.overview}</p>
               ) : (
                 <p className="warning">
                   We still don't have an overview translated in English.
                 </p>
               )}
               <br />
-              <MovieControls
-                onClick={toggleModal}
-                type={card_type + collection + "-card"}
-                movie={movie}
-              />
+              {card_type === "watchlist-tv" ||
+              card_type === "watchlist-movie" ? (
+                <MovieControls
+                  onClick={toggleModal}
+                  type={card_type + "-card"}
+                  movie={movie}
+                />
+              ) : (
+                <MovieControls
+                  onClick={toggleModal}
+                  type={card_type + collection + "-card"}
+                  movie={movie}
+                />
+              )}
             </div>
           </div>
         </div>

@@ -108,13 +108,17 @@
     transform: translate(-50%, -50%);
     line-height: 1.4;
     background: #242424;
-    padding: 14px 28px;
-    border-radius: 3px;
+    padding: 30px 40px;
+    border-radius: 20px;
     max-width: 600px;
     min-width: 300px;
 }
-
-
+.card-overview {
+    margin-top: 1rem;
+}
+.modal-backdrop-img {
+    border-radius: 20px;
+}
 .close-modal {
     position: absolute;
     top: 10px;

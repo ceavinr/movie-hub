@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import bg from "../../assets/bg.jpg";
 import CollectionCard from "../CollectionCard";
 
@@ -99,7 +99,7 @@ const Collections = () => {
       <div className="container">
         <div className="movie-page">
           <div className="header">
-            <h2 className="heading">Collections</h2>
+            <h1 className="heading">Collections</h1>
           </div>
           <div className="add-content">
             <div className="search-container">

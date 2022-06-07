@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { API_KEY, BASE_URL } from "../../api/apiConfig";
-import Moment from "react-moment";
 import "./Details.css";
 
 // import Swiper core and required modules
