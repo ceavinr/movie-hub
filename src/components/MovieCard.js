@@ -106,11 +106,11 @@ function Movie({ movie, card_type, collection }) {
       <div className="movie-list">
         <MovieControls type={card_type} movie={movie} />
         {collection === "collection" ? (
-          <div
-            className="movie-list-content"
-            onClick={() => navigate("/movie/" + movie.id)}
-          >
-            {movie.title ? (
+          movie.title ? (
+            <div
+              className="movie-list-content"
+              onClick={() => navigate("/movie/" + movie.id)}
+            >
               <img
                 className="movie-list-img"
                 src={
@@ -120,7 +120,20 @@ function Movie({ movie, card_type, collection }) {
                 }
                 alt={movie.title}
               />
-            ) : (
+
+              <div className="movie-list-info">
+                <h3 className="movie-list-title">{movie.title}</h3>
+
+                <span className={getColor(movie.vote_average)}>
+                  <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div
+              className="movie-list-content"
+              onClick={() => navigate("/tv/" + movie.id)}
+            >
               <img
                 className="movie-list-img"
                 src={
@@ -130,18 +143,16 @@ function Movie({ movie, card_type, collection }) {
                 }
                 alt={movie.name}
               />
-            )}
-            <div className="movie-list-info">
-              {movie.title ? (
-                <h3 className="movie-list-title">{movie.title}</h3>
-              ) : (
+
+              <div className="movie-list-info">
                 <h3 className="movie-list-title">{movie.name}</h3>
-              )}
-              <span className={getColor(movie.vote_average)}>
-                <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
-              </span>
+
+                <span className={getColor(movie.vote_average)}>
+                  <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
+                </span>
+              </div>
             </div>
-          </div>
+          )
         ) : (
           <div className="movie-list-content" onClick={toggleModal}>
             {movie.title ? (
