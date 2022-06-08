@@ -11,6 +11,9 @@
 }
 
 .ctrl-btn {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 0 1rem 0 1rem;
   color: #fefefe;
   background-color: transparent;
   border: none;
@@ -28,8 +31,32 @@
     pointer-events: none;
     opacity: 0.5;
 }
-
+.ctrl-btn .fa-times {
+  display: block;
+  margin: auto;
+}
+.ctrl-btn .fa-plus {
+  display: block;
+  margin: auto;
+}
+.ctrl-btn-card .fa-times {
+  color: var(--primary);
+  display: block;
+  margin: auto;
+}
+.ctrl-btn-card .fa-plus {
+  color: var(--primary);
+  display: block;
+  margin: auto;
+}
+.ctrl-btn-card .fa-info {
+  display: block;
+  margin: auto;
+}
 .ctrl-btn-card {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr;
   color: var(--primary);
   background-color: var(--secondary);
   border-radius: 10px;
@@ -53,6 +80,9 @@
 
 @media (max-width: 1024px) {
   .ctrl-btn {
-    font-size: 18px;
+    font-size: 13px;
+  }
+  .ctrl-btn-card {
+    font-size: 15px;
   }
 }

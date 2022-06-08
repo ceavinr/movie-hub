@@ -48,13 +48,32 @@ export const MovieControls = ({ type, movie }) => {
 
       {type === "non-watchlist" && (
         <div className="outer-card-controls">
-          <button
-            className="ctrl-btn"
-            disabled={watchlistDisabled}
-            onClick={() => addMovieToWatchlist(movie)}
-          >
-            <i className="fa-fw fa fa-plus"></i> Add to watchlist
-          </button>
+          {watchlistDisabled ? (
+            movie.title ? (
+              <button
+                className="ctrl-btn"
+                onClick={() => removeMovieFromWatchlist(movie.id)}
+              >
+                <i className="fa-fw fa fa-times"></i> Remove from watchlist
+              </button>
+            ) : (
+              <button
+                className="ctrl-btn"
+                onClick={() => removeTvFromWatchlist(movie.id)}
+              >
+                <i className="fa-fw fa fa-times"></i> Remove from watchlist
+              </button>
+            )
+          ) : (
+            <>
+              <button
+                className="ctrl-btn"
+                onClick={() => addMovieToWatchlist(movie)}
+              >
+                <i className="fa-fw fa fa-plus"></i> Add to watchlist
+              </button>
+            </>
+          )}
         </div>
       )}
 
@@ -106,13 +125,23 @@ export const MovieControls = ({ type, movie }) => {
           >
             <i className="fa-fw fa fa-info"></i> Details
           </button>
-          <button
-            className="ctrl-btn-card"
-            disabled={watchlistDisabled}
-            onClick={() => addMovieToWatchlist(movie)}
-          >
-            <i className="fa-fw fa fa-plus"></i> Add to watchlist
-          </button>
+          {watchlistDisabled ? (
+            <button
+              className="ctrl-btn-card"
+              onClick={() => removeTvFromWatchlist(movie.id)}
+            >
+              <i className="fa-fw fa fa-times"></i> Remove from watchlist
+            </button>
+          ) : (
+            <>
+              <button
+                className="ctrl-btn-card"
+                onClick={() => addMovieToWatchlist(movie)}
+              >
+                <i className="fa-fw fa fa-plus"></i> Add to watchlist
+              </button>
+            </>
+          )}
         </div>
       )}
 
@@ -126,13 +155,23 @@ export const MovieControls = ({ type, movie }) => {
           >
             <i className="fa-fw fa fa-info"></i> Details
           </button>
-          <button
-            className="ctrl-btn-card"
-            disabled={watchlistDisabled}
-            onClick={() => addMovieToWatchlist(movie)}
-          >
-            <i className="fa-fw fa fa-plus"></i> Add to watchlist
-          </button>
+          {watchlistDisabled ? (
+            <button
+              className="ctrl-btn-card"
+              onClick={() => removeMovieFromWatchlist(movie.id)}
+            >
+              <i className="fa-fw fa fa-times"></i> Remove from watchlist
+            </button>
+          ) : (
+            <>
+              <button
+                className="ctrl-btn-card"
+                onClick={() => addMovieToWatchlist(movie)}
+              >
+                <i className="fa-fw fa fa-plus"></i> Add to watchlist
+              </button>
+            </>
+          )}
         </div>
       )}
     </>
