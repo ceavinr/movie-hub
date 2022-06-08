@@ -46,7 +46,7 @@ function NowShowing({ tvs, movies }) {
                       card_type="non-watchlist"
                       movie={movie}
                       key={movie.id}
-                      collection="movie"
+                      collection="collection"
                     />
                   </SwiperSlide>
                 ))}
@@ -86,7 +86,7 @@ function NowShowing({ tvs, movies }) {
                       card_type="non-watchlist"
                       movie={movie}
                       key={movie.id}
-                      collection="tv"
+                      collection="collection"
                     />
                   </SwiperSlide>
                 ))}
