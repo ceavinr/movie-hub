@@ -4,6 +4,7 @@ import "./Movies.css";
 import Movie from "../MovieCard";
 import apiConfig from "../../api/apiConfig";
 import { useParams } from "react-router-dom";
+import bg from "../../assets/img-home.jpg";
 
 const IMG_URL_ORIGINAL = "https://image.tmdb.org/t/p/original";
 
@@ -72,7 +73,7 @@ function Genres() {
             alt=""
           />
         ) : (
-          <img src={IMG_URL_ORIGINAL} alt="" />
+          <img src={bg} alt="" />
         )}
         <div className="container">
           <div className="movie-page">
