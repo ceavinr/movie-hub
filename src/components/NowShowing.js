@@ -14,7 +14,7 @@ function NowShowing({ tvs, movies }) {
     <>
       <div className="container">
         <div className="now-showing-page">
-          <section>
+          <div className="details-container">
             <h2>In Theatres</h2>
             <Swiper
               pagination={{
@@ -52,9 +52,9 @@ function NowShowing({ tvs, movies }) {
                 ))}
               : (<></>)
             </Swiper>
-          </section>
+          </div>
 
-          <section>
+          <div className="details-container">
             <h2>On TV</h2>
             <Swiper
               pagination={{
@@ -92,7 +92,7 @@ function NowShowing({ tvs, movies }) {
                 ))}
               : (<></>)
             </Swiper>
-          </section>
+          </div>
         </div>
       </div>
     </>
