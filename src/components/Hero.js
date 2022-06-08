@@ -4,7 +4,7 @@ import "./Hero.css";
 import { useNavigate } from "react-router-dom";
 
 // import Swiper core and required modules
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 
 // Import Swiper styles
@@ -23,8 +23,13 @@ function Hero({ movies, tvs }) {
           clickable: true,
           dynamicBullets: true,
         }}
+        loop={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         slidesPerView={1}
-        modules={[Pagination, Navigation]}
+        modules={[Autoplay, Pagination, Navigation]}
         className="home-swiper"
       >
         {movies.length > 0 ? (
