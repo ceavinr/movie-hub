@@ -5,7 +5,6 @@ import Movie from "../MovieCard";
 import GenreBox from "../GenreBox";
 import apiConfig from "../../api/apiConfig";
 import bg from "../../assets/img-home.jpg";
-import Search from "../Search";
 
 // const operation = (list1, list2, isUnion = false) =>
 //   list1.filter(
@@ -133,11 +132,11 @@ function Movies() {
             </div>
 
             <div className="add-content">
-              <Search
+              {/* <Search
                 items={genres}
                 card_type={"non-watchlist-movie-card"}
                 type={"movie"}
-              />
+              /> */}
               <div className="button-wrapper">
                 <button className="left-arrow-button" onClick={onPreviousPage}>
                   <i class="fa-solid fa-arrow-left"></i>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import bg from "../../assets/bg.jpg";
+import bg from "../../assets/img-home.jpg";
 import CollectionCard from "../CollectionCard";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Movie from "../MovieCard";
@@ -14,6 +14,7 @@ const Collections = () => {
 
   const navigate = useNavigate();
   const [search, setSearch] = useState([]);
+  const [total, setTotal] = useState([]);
   const [query, setQuery] = useState(searchTerm);
   const [page, setPage] = useState(parseInt(pageTerm));
   const [maxPage, setMaxPage] = useState(500);
@@ -26,6 +27,7 @@ const Collections = () => {
       .then((data) => {
         if (!data.errors) {
           setSearch(data.results);
+          setTotal(data.total_results);
           if (data.total_pages > 500) {
             setMaxPage(500);
           } else if (data.total_pages === 0) {
@@ -102,7 +104,7 @@ const Collections = () => {
   return (
     <>
       <div className="background">
-        <img src={bg} alt="" />
+        <img className="background-genre-image" src={bg} alt="" />
       </div>
       <div className="container">
         <div className="movie-page">
@@ -115,28 +117,56 @@ const Collections = () => {
               id="movie"
               onClick={onClick}
             >
-              Movies
+              Movies{" "}
+              {category === "movie" ? (
+                <span className="count-nav" id="movie">
+                  {total > 99 ? "99+" : total}
+                </span>
+              ) : (
+                <></>
+              )}
             </button>
             <button
               className={category === "tv" ? "active" : ""}
               id="tv"
               onClick={onClick}
             >
-              TV Shows
+              TV Shows{" "}
+              {category === "tv" ? (
+                <span className="count-nav" id="tv">
+                  {total > 99 ? "99+" : total}
+                </span>
+              ) : (
+                <></>
+              )}
             </button>
             <button
               className={category === "person" ? "active" : ""}
               id="person"
               onClick={onClick}
             >
-              People
+              People{" "}
+              {category === "person" ? (
+                <span className="count-nav" id="person">
+                  {total > 99 ? "99+" : total}
+                </span>
+              ) : (
+                <></>
+              )}
             </button>
             <button
               className={category === "collection" ? "active" : ""}
               id="collection"
               onClick={onClick}
             >
-              Collections
+              Collections{" "}
+              {category === "collection" ? (
+                <span className="count-nav" id="collection">
+                  {total > 99 ? "99+" : total}
+                </span>
+              ) : (
+                <></>
+              )}
             </button>
           </div>
           <div className="add-content">
@@ -152,19 +182,24 @@ const Collections = () => {
               </div>
             </div>
             {query.length > 0 ? (
-              <div className="button-wrapper">
-                <button className="left-arrow-button" onClick={onPreviousPage}>
-                  <i class="fa-solid fa-arrow-left"></i>
-                </button>
-                <h2 className="page-fraction">
-                  {"\u00A0"}Page {page}/{maxPage}
-                  {"\u00A0"}
-                  {"\u00A0"}
-                </h2>
-                <button className="right-arrow-button" onClick={onNextPage}>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
-              </div>
+              <>
+                <div className="button-wrapper">
+                  <button
+                    className="left-arrow-button"
+                    onClick={onPreviousPage}
+                  >
+                    <i class="fa-solid fa-arrow-left"></i>
+                  </button>
+                  <h2 className="page-fraction">
+                    {"\u00A0"}Page {page}/{maxPage}
+                    {"\u00A0"}
+                    {"\u00A0"}
+                  </h2>
+                  <button className="right-arrow-button" onClick={onNextPage}>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </>
             ) : (
               <></>
             )}
