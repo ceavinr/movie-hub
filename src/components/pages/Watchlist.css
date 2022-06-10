@@ -9,6 +9,18 @@
     margin-bottom: 10px
   }
 
+  .count-pill {
+    justify-content: center;
+    display: flex;
+    background-color: transparent;
+    padding: 5px 15px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: 1px solid;
+    border-radius: 999px;
+    color: var(--secondary);
+  }
+  
   .watchlist-page .heading {
     color: var(--secondary);
   }
@@ -38,10 +50,24 @@
   
   /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
 @media screen and (max-width: 1024px) {
-  
+  .count-pill {
+    font-size: 15px !important;
+  }
+  .watchlist-header-button {
+    font-size: 15px !important;
+    margin-left: -3.5rem;
+    width: 7rem;
+  }
 }
 
 /* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
 @media screen and (max-width: 600px) {
-  
+  .count-pill {
+    font-size: 10px !important;
+  }
+  .watchlist-header-button {
+    font-size: 12px !important;
+    margin-left: -3rem;
+    width: 6rem;
+  }
 }

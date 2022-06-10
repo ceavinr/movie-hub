@@ -1,4 +1,3 @@
-
 .search-category{
     color: var(--primary);
     margin: 2rem 10% 0 10% ;
@@ -28,7 +27,7 @@
     color: var(--secondary);
 }
 
-.active{
+.search-category .active{
     background-color: var(--secondary) !important;
     color: var(--primary) !important;
 }
