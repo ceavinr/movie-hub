@@ -93,6 +93,10 @@ section {
   color: red;
 }
 
+.opacity-2 {
+  opacity: .2;
+}
+
 /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
 @media screen and (max-width: 1024px) {
   .container {

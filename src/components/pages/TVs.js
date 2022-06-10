@@ -111,7 +111,7 @@ function TVs() {
         <div className="container">
           <div className="movie-page">
             <div className="header">
-              <h1 className="heading">TV Series</h1>
+              <h1 className="heading">TV Shows</h1>
             </div>
 
             <div className="movie-genres">
