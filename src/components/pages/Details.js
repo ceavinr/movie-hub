@@ -98,8 +98,6 @@ const Details = () => {
       setVideos(videos_data.results);
     });
   }, [VIDEOS_URL]);
-  console.log(similar);
-  console.log(recommendations);
 
   return (
     <>
@@ -220,6 +218,17 @@ const Details = () => {
                   <br />
                   <div className="details-crews">
                     <ol>
+                      {movie.created_by ? (
+                        movie.created_by.map((people) => (
+                          <li className="details-crew">
+                            <h4>{people.name}</h4>
+                            <h5>(Creator)</h5>
+                            <br />
+                          </li>
+                        ))
+                      ) : (
+                        <></>
+                      )}
                       {crews ? (
                         crews.map((people) =>
                           people.job === "Screenplay" ||
@@ -289,7 +298,7 @@ const Details = () => {
               <section>
                 <h2 className="details-heading">Casts</h2>
                 <br />
-                <SwiperCards cards={casts} nav="people" cast={true} />
+                <SwiperCards cards={casts} nav="person" cast={true} />
               </section>
 
               <section>

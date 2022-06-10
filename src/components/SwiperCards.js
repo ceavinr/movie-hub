@@ -48,7 +48,7 @@ const SwiperCards = ({ cards, nav, cast }) => {
                   navigate(`${"/" + nav + "/" + item.id}`);
                 }}
               >
-                {nav === "people" ? (
+                {nav === "person" ? (
                   <img
                     src={
                       item.profile_path
@@ -82,7 +82,7 @@ const SwiperCards = ({ cards, nav, cast }) => {
                 <div className="card-text">
                   {cast ? (
                     <>
-                      {nav === "people" ? (
+                      {nav === "person" ? (
                         <h4>{item.name}</h4>
                       ) : nav === "movie" ? (
                         <h4>{item.title}</h4>
