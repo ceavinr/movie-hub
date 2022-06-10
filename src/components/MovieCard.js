@@ -147,9 +147,13 @@ function Movie({ movie, card_type, collection }) {
               <div className="movie-list-info">
                 <h3 className="movie-list-title">{movie.name}</h3>
 
-                <span className={getColor(movie.vote_average)}>
-                  <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
-                </span>
+                {movie.vote_average ? (
+                  <span className={getColor(movie.vote_average)}>
+                    <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
+                  </span>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           )
@@ -182,9 +186,13 @@ function Movie({ movie, card_type, collection }) {
               ) : (
                 <h3 className="movie-list-title">{movie.name}</h3>
               )}
-              <span className={getColor(movie.vote_average)}>
-                <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
-              </span>
+              {movie.vote_average ? (
+                <span className={getColor(movie.vote_average)}>
+                  <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         )}
