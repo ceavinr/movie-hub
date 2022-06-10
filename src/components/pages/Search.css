@@ -23,10 +23,6 @@
     align-items: center;
 }
 
-.search-category button:active{
-    transform: translateY(4px);
-}
-
 .search-category .count-nav{
     background: var(--primary);
     color: var(--secondary);

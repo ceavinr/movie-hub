@@ -97,6 +97,10 @@ section {
   opacity: .2;
 }
 
+button:active{
+  transform: translateY(4px);
+}
+
 /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
 @media screen and (max-width: 1024px) {
   .container {

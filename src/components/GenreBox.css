@@ -11,17 +11,9 @@
     cursor: pointer;
 }
 
-.movie-genre:active{
-    transform: translateY(4px);
-}
-
 .movie-genre.active{
     background-color: var(--secondary);
     color: var(--primary);
-}
-
-.movie-genre.active:active{
-    transform: translateY(4px);
 }
 
 /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
