@@ -58,7 +58,10 @@ function Navbar() {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Watchlist <span className="count-nav">{watchlist.length}</span>
+                Watchlist{" "}
+                <span className="count-nav">
+                  {watchlist.length > 99 ? "99+" : watchlist.length}
+                </span>
               </Link>
             </li>
             <li className="nav-item">

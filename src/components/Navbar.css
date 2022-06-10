@@ -52,13 +52,16 @@
 }
 
 .count-nav {
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
   margin-left: 5px;
-  display: inline-block;
+  font-size: 75%;
   background-color: var(--secondary);
   border-radius: 50%;
   color: var(--primary);
+  justify-content: center;
 }
 
 .nav-links {
