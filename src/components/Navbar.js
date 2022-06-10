@@ -52,15 +52,6 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link
-                to="/collection"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Collections
-              </Link>
-            </li> */}
             <li className="nav-item">
               <Link
                 to="/watchlist"
@@ -77,7 +68,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link to="/tv" className="nav-links" onClick={closeMobileMenu}>
-                TV Series
+                TV Shows
               </Link>
             </li>
           </ul>

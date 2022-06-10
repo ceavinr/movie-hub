@@ -57,7 +57,7 @@ const Search = ({ items, card_type, type }) => {
           className="search-input"
           onFocus={() => setSuggest(true)}
           type="text"
-          placeholder={"Search " + type + "s"}
+          placeholder={"Search " + type}
           value={query}
           onChange={onChange ? (e) => onChange(e) : null}
         />

@@ -81,24 +81,22 @@ const SwiperCards = ({ cards, nav, cast }) => {
 
                 <div className="card-text">
                   {cast ? (
-                    nav === "people" ? (
-                      <>
+                    <>
+                      {nav === "people" ? (
                         <h4>{item.name}</h4>
-                        <h5>({item.character})</h5>
-                      </>
-                    ) : nav === "movie" ? (
-                      <>
+                      ) : nav === "movie" ? (
                         <h4>{item.title}</h4>
-                        <h5>({item.character})</h5>
-                      </>
-                    ) : nav === "tv" ? (
-                      <>
+                      ) : nav === "tv" ? (
                         <h4>{item.name}</h4>
+                      ) : (
+                        <></>
+                      )}
+                      {item.character ? (
                         <h5>({item.character})</h5>
-                      </>
-                    ) : (
-                      <></>
-                    )
+                      ) : (
+                        <h5 className="warning">Unknown</h5>
+                      )}
+                    </>
                   ) : nav === "movie" ? (
                     <>
                       <h4>{item.title}</h4>
