@@ -33,13 +33,6 @@
     justify-content: center;
   }
 
-  .add-content {
-    padding: 10px 0;
-    padding-bottom: 30px;
-    max-width: 80%;
-    margin: 2rem auto;
-  }
-
   .button-wrapper {
     display: flex;
     justify-content: center;
@@ -56,17 +49,6 @@
     transition: all 20ms ease-in-out ;
     cursor: pointer;
     width: 100px;
-  }
-
-  .input-wrapper > input {
-    width: 100%;
-    background-color: transparent;
-    padding: 10px 2rem 10px 2rem;
-    font-size: 1.25rem;
-    border: 2px solid;
-    border-color: var(--secondary);
-    color: var(--secondary);
-    border-radius: 30px;
   }
   
   .movie-count{
@@ -88,34 +70,31 @@
   /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
 @media screen and (max-width: 1024px) {
   .button-wrapper > button {
-    margin-right: 5px;
-    padding: 0.2rem 0.6rem;
-    font-size: 120%;
+    font-size: 100%;
+    width: 70px;
 }    
+  .page-fraction {
+    font-size: 150%;
+  }
 }
 
 /* ============= MEDIA QUERIES (SMALLER DEVICES) ============= */ 
 @media (max-width: 768px) {
   .button-wrapper > button {
     font-size: 100%;
-    width: 90px;
+    width: 60px;
   }   
-.page-fraction {
-  font-size: 150%;
-}
+  .page-fraction {
+    font-size: 120%;
+  }
 }
 /* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
 @media screen and (max-width: 600px) {
-  .add-content input {
-    height: 40px;
-    font-size: smaller;
-    padding-left: 15px;
-  }
   .page-fraction {
     font-size: 100%;
   }
   .button-wrapper > button {
-    font-size: 50%;
-    width: 50px;
+    font-size: 80%;
+    width: 40px;
   }   
 }

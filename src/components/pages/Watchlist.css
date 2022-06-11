@@ -39,7 +39,8 @@
     transition: all 20ms ease-in-out ;
     cursor: pointer;
   }
-  .watchlist-page .no-movies {
+  
+  .no-movies {
     position: relative;
     margin-top: 21%;
     margin-bottom: 21%;
@@ -58,6 +59,10 @@
     margin-left: -3.5rem;
     width: 7rem;
   }
+  .no-movies {
+    font-size: 40px;
+    margin: 15rem 0;
+  }
 }
 
 /* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
@@ -69,5 +74,9 @@
     font-size: 12px !important;
     margin-left: -3rem;
     width: 6rem;
+  }
+  .no-movies {
+    font-size: 20px;
+    margin: 10rem 0;
   }
 }
