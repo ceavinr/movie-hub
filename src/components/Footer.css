@@ -46,5 +46,21 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
+  .footer-container {
+    padding: 2rem 0;
+  }
+  .social-logo {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .website-rights {
+    font-size: 10px;
+  }
+  .social-icon-link{
+    font-size: 15px;
+  }
+  .social-icons {
+    width: 30%;
+  }
 }
