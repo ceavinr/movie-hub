@@ -38,9 +38,11 @@ function Navbar() {
             {"\u00a0\u00a0"}
             <i className="fab fa-monero" />
           </Link>
-          <h3 className="navbar-name">
-            {"\u00a0\u00a0"}MovieHub{"\u00a0\u00a0"}
-          </h3>
+          <Link to="/" className="navbar-name">
+            <h3>
+              {"\u00a0\u00a0"}MovieHub{"\u00a0\u00a0"}
+            </h3>
+          </Link>
 
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />

@@ -18,6 +18,7 @@ const RoutesConfig = () => {
       <Route path="/movie" element={<Movies />} />
       <Route path="/tv" element={<TVs />} />
       <Route path="/search/:category" element={<Search />} />
+      <Route path="/search/*" element={<Search />} />
       <Route path="/collection/:id" element={<CollectionDetails />} />
       <Route path="/:category/:id" element={<Details />} />
       <Route path="/:category/genres/:genre" element={<Genres />} />
