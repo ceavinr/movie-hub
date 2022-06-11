@@ -34,7 +34,7 @@ function NowShowing({ tvs, movies }) {
                 525: {
                   slidesPerView: 4,
                 },
-                600: {
+                601: {
                   slidesPerView: 1,
                 },
                 625: {
@@ -83,7 +83,7 @@ function NowShowing({ tvs, movies }) {
                 525: {
                   slidesPerView: 4,
                 },
-                600: {
+                601: {
                   slidesPerView: 1,
                 },
                 625: {

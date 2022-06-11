@@ -327,7 +327,7 @@ const Details = () => {
                     525: {
                       slidesPerView: 4,
                     },
-                    600: {
+                    601: {
                       slidesPerView: 1,
                     },
                     625: {
@@ -379,7 +379,7 @@ const Details = () => {
                     525: {
                       slidesPerView: 4,
                     },
-                    600: {
+                    601: {
                       slidesPerView: 1,
                     },
                     625: {
