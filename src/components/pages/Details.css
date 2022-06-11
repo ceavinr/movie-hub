@@ -17,7 +17,7 @@
   grid-template-rows: 1fr auto;
 }
 
-.details-heading{
+.heading{
   display: flex;
   flex-wrap: wrap;
 }
@@ -53,26 +53,23 @@
 
 .details-poster {
   width: 100%;
+  grid-area: a;
 }
 .poster {
   width: 500px;
   border-radius: 50px;
 }
-
+.details-desc {
+  grid-area: b;
+}
 .details-info {
   color: var(--secondary);
   font-size: 25px;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-template-areas: "a b"
+                       "a c";
   gap: 1rem;
-}
-
-.details-people-info {
-  color: var(--secondary);
-  font-size: 20px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
 }
 
 .swiper-wrapper {
@@ -128,6 +125,7 @@
   text-decoration: underline
 }
 .details-crews > ol{
+  grid-area: c;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -161,28 +159,25 @@
   section > h1 {
     font-size: 300%;
   }
-  .details-heading > span {
+  .details-header span {
     font-size: 50%;
   }
-  .details-people-info {
-    color: var(--secondary);
-    display: block;
-    font-size: 20px;
-  }
-  .details-people-info .details-poster{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 3rem;
+  
+  .details-poster{
+    width: 100%;
   }
   .poster{
-    width: 70%;
+    width: 100%;
   }
   .details-info {
     font-size: 100%;
+    grid-template-columns: 1fr 1fr;
   }
-  .details-bio {
-    font-size: 20px;
+  .details-info h4 {
+    font-size: 100%;
+  }
+  .details-info h5 {
+    font-size: 80%;
   }
   .card-text h4{
     font-size: 90%;
@@ -198,16 +193,22 @@
 /* ============= MEDIA QUERIES (SMALLER DEVICES) ============= */ 
 @media (max-width: 768px) {
   .details-info {
-    grid-template-columns: 1fr;
-  }
-
-  .details-info {
     font-size: 150%;
+    
+  grid-template-columns: 1fr;
+  grid-template-areas: "a"
+                       "b"
+                       "c";
   }
   .details-crew > h4, .details-crew > h5{
     font-size: 70%;
   }
-
+  .details-poster {
+    width: 60%;
+  }
+  .details-desc p {
+    font-size: 20px;
+  }
 }
 
 /* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
@@ -215,17 +216,22 @@
   .details-page {
     margin: 2rem;
   }
+  .details-heading {
+    font-size: 25px;
+  }
   .details-info {
     font-size: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "a c"
+                         "b b";
   }
-  .details-bio {
-    font-size: 80%;
-  }
+
   .poster  {
     border-radius: 10px;
   }
-  .details-header > h1 {
-    font-size: 300%;
+  .details-header span {
+    font-size: 50%;
   }
   .details-cast > h4, .details-cast > h5{
     font-size: 80%;
@@ -244,13 +250,52 @@
   .card-text > h5{
     font-size: 7px;
   }
+  .details-poster {
+    width: 100%;
+  }
+  .details-desc p {
+    font-size: 13px;
+  }
+  .collection-banner {
+    padding: 60px;
+  }
+  .collection-banner h2 {
+    font-size: 25px;
+    padding-bottom: 10px;
+  }
+  .collection-banner h4 {
+    font-size: 15px;
+  }
+  .collection-banner button {
+    font-size: 15px;
+  }
 }
 /* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   .details-header > h1 {
     font-size: 200%;
   }
-  .details-bio{
-    font-size: 13px;
+  
+  .details-heading {
+    font-size: 20px;
+  }
+  .details-info {
+    grid-template-columns: 1fr;
+    grid-template-areas: "a"
+                         "b"
+                         "c";
+  }
+  .collection-banner {
+    padding: 40px;
+  }
+  .collection-banner h2 {
+    font-size: 15px;
+    padding-bottom: 10px;
+  }
+  .collection-banner h4 {
+    font-size: 10px;
+  }
+  .collection-banner button {
+    font-size: 10px;
   }
 }

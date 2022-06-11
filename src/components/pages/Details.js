@@ -121,7 +121,7 @@ const Details = () => {
       <div className="container">
         <div className="details-page">
           <div className="details-header">
-            <h1 className="details-heading">
+            <h1 className="heading">
               {category === "movie" ? movie.title : movie.name}
               {"\u00A0"}
               <span className={getColor(movie.vote_average)}>
@@ -216,38 +216,38 @@ const Details = () => {
                     )}
                   </p>
                   <br />
-                  <div className="details-crews">
-                    <ol>
-                      {movie.created_by ? (
-                        movie.created_by.map((people) => (
+                </div>
+                <div className="details-crews">
+                  <ol>
+                    {movie.created_by ? (
+                      movie.created_by.map((people) => (
+                        <li className="details-crew">
+                          <h4>{people.name}</h4>
+                          <h5>(Creator)</h5>
+                          <br />
+                        </li>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                    {crews ? (
+                      crews.map((people) =>
+                        people.job === "Screenplay" ||
+                        people.job === "Director" ||
+                        people.job === "Characters" ? (
                           <li className="details-crew">
                             <h4>{people.name}</h4>
-                            <h5>(Creator)</h5>
+                            <h5>({people.job})</h5>
                             <br />
                           </li>
-                        ))
-                      ) : (
-                        <></>
-                      )}
-                      {crews ? (
-                        crews.map((people) =>
-                          people.job === "Screenplay" ||
-                          people.job === "Director" ||
-                          people.job === "Characters" ? (
-                            <li className="details-crew">
-                              <h4>{people.name}</h4>
-                              <h5>({people.job})</h5>
-                              <br />
-                            </li>
-                          ) : (
-                            <></>
-                          )
+                        ) : (
+                          <></>
                         )
-                      ) : (
-                        <></>
-                      )}
-                    </ol>
-                  </div>
+                      )
+                    ) : (
+                      <></>
+                    )}
+                  </ol>
                 </div>
               </section>
 

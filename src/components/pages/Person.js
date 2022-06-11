@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import apiConfig, { API_KEY } from "../../api/apiConfig";
 import "./Details.css";
+import "./Person.css";
 
 import SwiperCards from "../SwiperCards";
 
