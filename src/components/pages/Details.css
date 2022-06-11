@@ -230,9 +230,6 @@
   .details-cast > h4, .details-cast > h5{
     font-size: 80%;
   }
-  .details-cast img {
-    width: 100%;
-  }
   .details-genre {
     font-size: 80%;
     padding: 0.5rem 1rem;

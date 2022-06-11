@@ -318,14 +318,11 @@ const Details = () => {
                   modules={[Pagination, Navigation]}
                   className="collection-movies"
                   breakpoints={{
-                    300: {
+                    340: {
                       slidesPerView: 2,
                     },
-                    400: {
+                    500: {
                       slidesPerView: 3,
-                    },
-                    525: {
-                      slidesPerView: 4,
                     },
                     601: {
                       slidesPerView: 1,
@@ -370,14 +367,11 @@ const Details = () => {
                   modules={[Pagination, Navigation]}
                   className="collection-movies"
                   breakpoints={{
-                    300: {
+                    340: {
                       slidesPerView: 2,
                     },
-                    400: {
+                    500: {
                       slidesPerView: 3,
-                    },
-                    525: {
-                      slidesPerView: 4,
                     },
                     601: {
                       slidesPerView: 1,
