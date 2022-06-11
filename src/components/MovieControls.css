@@ -86,3 +86,22 @@
     font-size: 15px;
   }
 }
+
+@media (max-width: 768px) {
+  .ctrl-btn-card {
+    padding: 7px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ctrl-btn {
+    font-size: 8px;
+  }
+  .ctrl-btn-card {
+    font-size: 10px;
+  }
+  .outer-card-controls {
+    padding: 0.5rem 0;
+  }
+}
