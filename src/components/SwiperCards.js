@@ -25,8 +25,17 @@ const SwiperCards = ({ cards, nav, cast }) => {
         modules={[Pagination, Navigation]}
         className="details-casts"
         breakpoints={{
-          425: {
+          300: {
+            slidesPerView: 1.5,
+          },
+          370: {
             slidesPerView: 2,
+          },
+          410: {
+            slidesPerView: 2.5,
+          },
+          500: {
+            slidesPerView: 3,
           },
           768: {
             slidesPerView: 4,
