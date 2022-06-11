@@ -25,7 +25,16 @@ function NowShowing({ tvs, movies }) {
               modules={[Pagination, Navigation]}
               className="collection-movies"
               breakpoints={{
-                425: {
+                300: {
+                  slidesPerView: 2,
+                },
+                400: {
+                  slidesPerView: 3,
+                },
+                525: {
+                  slidesPerView: 4,
+                },
+                600: {
                   slidesPerView: 1,
                 },
                 625: {
@@ -65,7 +74,16 @@ function NowShowing({ tvs, movies }) {
               modules={[Pagination, Navigation]}
               className="collection-movies"
               breakpoints={{
-                425: {
+                300: {
+                  slidesPerView: 2,
+                },
+                400: {
+                  slidesPerView: 3,
+                },
+                525: {
+                  slidesPerView: 4,
+                },
+                600: {
                   slidesPerView: 1,
                 },
                 625: {
