@@ -51,7 +51,9 @@ const Person = () => {
     requestData(
       `${apiConfig.people.PEOPLE_URL}${id}/movie_credits?${API_KEY}`
     ).then((banner_data) => {
-      setBanner(banner_data.cast[0].backdrop_path);
+      if (banner_data.cast[0]) {
+        setBanner(banner_data.cast[0].backdrop_path);
+      }
     });
   }, [id]);
 
@@ -77,7 +79,7 @@ const Person = () => {
       <div className="container">
         <div className="details-page">
           <div className="details-header">
-            <h1 className="details-heading">
+            <h1 className="heading">
               {cast.name}
               {"\u00A0"}
             </h1>

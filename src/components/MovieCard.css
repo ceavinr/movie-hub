@@ -48,7 +48,7 @@
     font-size: 120%;
 }
 
-.movie-list-info span, .warning{
+.movie-list-info span, .movie-list-info .warning{
     margin-top: 5px;
     border: 1px solid;
     padding: 0.25rem 0.5rem;
@@ -131,7 +131,7 @@
         font-size: smaller
     }
 
-    .movie-list span, .warning{
+    .movie-list span, .movie-list-info .warning{
         font-size: 10px;
     }
 
@@ -168,7 +168,7 @@
     .movie-list-title {
         font-size: 8px;
     }
-    .movie-list-info > span, .warning {
+    .movie-list-info > span, .movie-list-info .warning {
         margin-top: 5px;
         font-size: 6px;
         padding: 0.1rem 0.2rem;
