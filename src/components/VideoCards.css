@@ -1,8 +1,8 @@
 iframe {
-    width: 80%;
+    width: 100%;
     display: block;
     margin: auto;
-    aspect-ratio: 853/480;
+    aspect-ratio: 14/9;
     padding-bottom: 2.5rem  ;
 }
 
@@ -14,4 +14,20 @@ iframe {
 .swiper-button-prev::after, .swiper-button-next::after {
     padding-bottom: 2.5rem  ;
     color: var(--white);
+}
+
+@media screen and (max-width: 1024px) {
+    iframe {
+        aspect-ratio: 12/9;
+    }
+}
+@media screen and (max-width: 768px) {
+    iframe {
+        aspect-ratio: 10/9;
+    }
+}
+@media screen and (max-width: 600px) {
+    iframe {
+        aspect-ratio: 100/101;
+    }
 }

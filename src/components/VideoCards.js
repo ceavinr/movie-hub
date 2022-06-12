@@ -32,8 +32,6 @@ const VideoCards = ({ videos }) => {
               <SwiperSlide>
                 <div>
                   <iframe
-                    width="853"
-                    height="450"
                     type="text/html"
                     title={video.title}
                     allowFullScreen
