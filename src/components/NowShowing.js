@@ -25,14 +25,20 @@ function NowShowing({ tvs, movies }) {
               modules={[Pagination, Navigation]}
               className="collection-movies"
               breakpoints={{
-                300: {
-                  slidesPerView: 2,
+                290: {
+                  slidesPerView: 1.5,
+                },
+                320: {
+                  slidesPerView: 1.75,
                 },
                 400: {
-                  slidesPerView: 3,
+                  slidesPerView: 2,
+                },
+                435: {
+                  slidesPerView: 2.5,
                 },
                 525: {
-                  slidesPerView: 4,
+                  slidesPerView: 3,
                 },
                 601: {
                   slidesPerView: 1,
@@ -74,14 +80,20 @@ function NowShowing({ tvs, movies }) {
               modules={[Pagination, Navigation]}
               className="collection-movies"
               breakpoints={{
-                300: {
-                  slidesPerView: 2,
+                290: {
+                  slidesPerView: 1.5,
+                },
+                320: {
+                  slidesPerView: 1.75,
                 },
                 400: {
-                  slidesPerView: 3,
+                  slidesPerView: 2,
+                },
+                435: {
+                  slidesPerView: 2.5,
                 },
                 525: {
-                  slidesPerView: 4,
+                  slidesPerView: 3,
                 },
                 601: {
                   slidesPerView: 1,

@@ -153,12 +153,12 @@
         font-size: 90%;
     }
     .movie-list {
-        width: 100px;
+        width: 130px;
         margin: 0.5rem;
         border-radius: 8px;
     }
     .movie-list-img{
-        width: 100px;
+        width: 100%;
     }
     .movie-list-info{
         display: block;
@@ -166,11 +166,11 @@
         padding: 0rem 0.6rem 0.6rem 0.6rem;
     }
     .movie-list-title {
-        font-size: 8px;
+        font-size: 10px;
     }
     .movie-list-info > span, .movie-list-info .warning {
         margin-top: 5px;
-        font-size: 6px;
+        font-size: 8px;
         padding: 0.1rem 0.2rem;
         border-radius: 6px;
     }

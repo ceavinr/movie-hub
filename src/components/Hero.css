@@ -22,6 +22,9 @@
   display: block;
   margin: 10% 0 auto 0;
 }
+.home-desc p {
+  font-size: 25px;
+}
 .home-poster-container {
   display: block;
   margin: auto;
@@ -62,42 +65,55 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 768px) {
   .home-info{
     gap: 4rem;
     padding-top: 100px;
   }
- 
+  
   .home-poster {
     width: 100%;
   }
-  .home-desc > h1{
-    font-size: 45px;
+  .home-poster {
+    display: block;
+    margin: auto;
+    width: 80%;
   }
+  
+}
 
-  .home-desc > h3{
-    font-size: 25px;
+@media screen and (max-width: 600px) {
+  .home-desc p {
+    font-size: 17px;
   }
-
+  .home-banner-button{
+    font-size: 15px;
+  }
+  .home-poster {
+    width: 70%;
+  }
+  .home-info{
+    gap: 2rem;
+  }
 }
 
 @media screen and (max-width: 425px) {
   .home-info{
     gap: 2rem;
-    padding-top: 150px;
+    padding-top: 100px;
   }
- 
-  .home-poster {
-    width: 100%;
+  .home-banner-button{
+    font-size: 10px;
+  }
+  .home-poster{
+    width: 80%;
   }
   .home-desc > h1{
     font-size: 35px;
   }
 
-  .home-desc > h3{
-    font-size: 20px;
-  }
-  .home-banner-button{
-    font-size: 20px;
+  .home-desc p {
+    font-size: 15px;
   }
 }

@@ -47,9 +47,9 @@ function Hero({ movies, tvs }) {
               >
                 <div className="home-info">
                   <div className="home-desc">
-                    <h1>{movie.title}</h1>
+                    <h1 className="heading">{movie.title}</h1>
                     <br />
-                    <h3>{movie.overview}</h3>
+                    <p>{movie.overview}</p>
                     <button
                       className="home-banner-button"
                       onClick={() => navigate("/movie/" + movie.id)}
@@ -90,9 +90,9 @@ function Hero({ movies, tvs }) {
               >
                 <div className="home-info">
                   <div className="home-desc">
-                    <h1>{movie.name}</h1>
+                    <h1 className="heading">{movie.name}</h1>
                     <br />
-                    <h3>{movie.overview}</h3>
+                    <p>{movie.overview}</p>
                     <button
                       className="home-banner-button"
                       onClick={() => navigate("/tv/" + movie.id)}
