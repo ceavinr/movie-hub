@@ -29,7 +29,7 @@ const Collections = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (!data.errors) {
+        if (query.length > 0) {
           setSearch(data.results);
           setTotal(data.total_results);
           if (data.total_pages > 500) {
@@ -42,6 +42,7 @@ const Collections = () => {
         } else {
           setSearch([]);
           setMaxPage(500);
+          setTotal(0);
         }
       });
   }, []);
@@ -153,7 +154,7 @@ const Collections = () => {
             </button>
           </div>
           <SearchBar initialQuery={query} />
-          {search ? (
+          {search && total > 0 ? (
             <div className="button-wrapper">
               <button className="left-arrow-button" onClick={onPreviousPage}>
                 <i class="fa-solid fa-arrow-left"></i>
@@ -169,24 +170,24 @@ const Collections = () => {
           ) : (
             <></>
           )}
-        </div>
-        <div className="movie-container">
-          {search ? (
-            search.map((collection) =>
-              category === "person" || category === "collection" ? (
-                <CollectionCard collection={collection} type={category} />
-              ) : (
-                <Movie
-                  card_type={"non-watchlist"}
-                  movie={collection}
-                  key={collection.id}
-                  collection={"-" + category}
-                />
+          <div className="movie-container">
+            {search ? (
+              search.map((collection) =>
+                category === "person" || category === "collection" ? (
+                  <CollectionCard collection={collection} type={category} />
+                ) : (
+                  <Movie
+                    card_type={"non-watchlist"}
+                    movie={collection}
+                    key={collection.id}
+                    collection={"-" + category}
+                  />
+                )
               )
-            )
-          ) : (
-            <></>
-          )}
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
       </div>
     </>

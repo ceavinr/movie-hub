@@ -19,7 +19,11 @@ function SearchBar({ initialQuery = "" }) {
 
     setQuery(e.target.value);
     if (e.target.value.length > 0) {
-      fetch(`${apiConfig.movie.SEARCH_URL}&query=${e.target.value}`)
+      fetch(
+        `${apiConfig.movie.SEARCH_URL}&query=${encodeURIComponent(
+          e.target.value
+        )}`
+      )
         .then((res) => res.json())
         .then((data) => {
           if (!data.errors) {
@@ -29,7 +33,11 @@ function SearchBar({ initialQuery = "" }) {
           }
         });
 
-      fetch(`${apiConfig.people.SEARCH_URL}&query=${e.target.value}`)
+      fetch(
+        `${apiConfig.people.SEARCH_URL}&query=${encodeURIComponent(
+          e.target.value
+        )}`
+      )
         .then((res) => res.json())
         .then((data) => {
           if (!data.errors) {
@@ -39,7 +47,9 @@ function SearchBar({ initialQuery = "" }) {
           }
         });
 
-      fetch(`${apiConfig.tv.SEARCH_URL}&query=${e.target.value}`)
+      fetch(
+        `${apiConfig.tv.SEARCH_URL}&query=${encodeURIComponent(e.target.value)}`
+      )
         .then((res) => res.json())
         .then((data) => {
           if (!data.errors) {
@@ -50,7 +60,9 @@ function SearchBar({ initialQuery = "" }) {
         });
 
       fetch(
-        `https://api.themoviedb.org/3/search/collection?api_key=9fee2dfca9fac3b1049c2bca2752291c&query=${e.target.value}`
+        `https://api.themoviedb.org/3/search/collection?api_key=9fee2dfca9fac3b1049c2bca2752291c&query=${encodeURIComponent(
+          e.target.value
+        )}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -79,7 +91,7 @@ function SearchBar({ initialQuery = "" }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    navigate("/search?query=" + query + "&page=" + 1);
+    navigate("/search?query=" + encodeURIComponent(query) + "&page=" + 1);
     window.location.reload(false);
   };
   return (
@@ -95,14 +107,18 @@ function SearchBar({ initialQuery = "" }) {
             value={query}
             onChange={onChange ? (e) => onChange(e) : null}
           />
-          {query.length > 0 ? (
+          {query.length > 0 && tv && movie && collection && people ? (
             suggest && (
               <div className="search-results">
                 {tv.length > 0 ? (
                   <div
                     className="search-result"
                     onClick={() => {
-                      navigate("/search/tv?query=" + tv[0].name + "&page=1");
+                      navigate(
+                        "/search/tv?query=" +
+                          encodeURIComponent(tv[0].name) +
+                          "&page=1"
+                      );
                       window.location.reload(false);
                     }}
                     tabIndex="0"
@@ -122,7 +138,9 @@ function SearchBar({ initialQuery = "" }) {
                     className="search-result"
                     onClick={() => {
                       navigate(
-                        "/search/movie?query=" + movie[0].title + "&page=1"
+                        "/search/movie?query=" +
+                          encodeURIComponent(movie[0].title) +
+                          "&page=1"
                       );
                       window.location.reload(false);
                     }}
@@ -143,7 +161,9 @@ function SearchBar({ initialQuery = "" }) {
                     className="search-result"
                     onClick={() => {
                       navigate(
-                        "/search/person?query=" + people[0].name + "&page=1"
+                        "/search/person?query=" +
+                          encodeURIComponent(people[0].name) +
+                          "&page=1"
                       );
                       window.location.reload(false);
                     }}
@@ -165,7 +185,7 @@ function SearchBar({ initialQuery = "" }) {
                     onClick={() => {
                       navigate(
                         "/search/collection?query=" +
-                          collection[0].name +
+                          encodeURIComponent(collection[0].name) +
                           "&page=1"
                       );
                       window.location.reload(false);
