@@ -154,7 +154,7 @@ const Collections = () => {
             </button>
           </div>
           <SearchBar initialQuery={query} />
-          {search && total > 0 ? (
+          {total > 0 ? (
             <div className="button-wrapper">
               <button className="left-arrow-button" onClick={onPreviousPage}>
                 <i class="fa-solid fa-arrow-left"></i>
@@ -171,7 +171,7 @@ const Collections = () => {
             <></>
           )}
           <div className="movie-container">
-            {search ? (
+            {total > 0 ? (
               search.map((collection) =>
                 category === "person" || category === "collection" ? (
                   <CollectionCard collection={collection} type={category} />
@@ -184,8 +184,18 @@ const Collections = () => {
                   />
                 )
               )
+            ) : category === "tv" ? (
+              <h2 className="no-movies">
+                There are no TV shows that matched your query
+              </h2>
+            ) : category === "person" ? (
+              <h2 className="no-movies">
+                There are no people that matched your query
+              </h2>
             ) : (
-              <></>
+              <h2 className="no-movies">
+                There are no {category + "s"} that matched your query
+              </h2>
             )}
           </div>
         </div>
