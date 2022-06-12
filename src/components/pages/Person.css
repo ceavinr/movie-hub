@@ -10,7 +10,7 @@
     grid-area: b;
     font-size: 25px;
   }
-.poster {
+  .details-people-info .poster {
     width: 100%;
 }
   @media screen and (max-width: 1300px) {
@@ -32,7 +32,7 @@
         align-items: center;
         margin-bottom: 3rem;
     }
-    .poster {
+    .details-people-info .poster {
         width: 50%;
     }
       .details-bio {
@@ -58,7 +58,7 @@
     .details-bio{
         font-size: 13px;
     }
-    .poster {
+    .details-people-info .poster {
         width: 90%;
     }
 }
