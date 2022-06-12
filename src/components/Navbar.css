@@ -154,6 +154,21 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+  .nav-item {
+    height: 60px;
+  }
+  .nav-links{
+    padding: 0;
+    font-size: 18px;
+  }
+  .nav-item .count-nav {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .navbar-name h3{
     font-size: 17px;
@@ -162,7 +177,18 @@
     font-size: 17px;
   }
   .navbar {
-    background: transparent;
     height: 60px;
+  }
+  .nav-item {
+    height: 40px;
+  }
+  .nav-links{
+    font-size: 12px;
+  }
+  .nav-item .count-nav {
+    margin: 0;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
   }
 }
