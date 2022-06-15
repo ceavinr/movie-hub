@@ -7,8 +7,6 @@ import { useParams } from "react-router-dom";
 import bg from "../../assets/img-home.jpg";
 
 const IMG_URL_ORIGINAL = "https://image.tmdb.org/t/p/original";
-const UR =
-  "https://api.themoviedb.org/3/discover/movie?api_key=9fee2dfca9fac3b1049c2bca2752291c&with_companies=420&sort_by=popularity.desc&page=1";
 
 function Genres() {
   const [results, setResults] = useState([]);
