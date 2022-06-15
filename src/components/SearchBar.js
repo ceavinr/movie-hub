@@ -9,6 +9,7 @@ function SearchBar({ initialQuery = "" }) {
   const [people, setPeople] = useState([]);
   const [movie, setMovie] = useState([]);
   const [collection, setCollection] = useState([]);
+  const [company, setCompany] = useState([]);
   const [tv, setTv] = useState([]);
   const [suggest, setSuggest] = useState([]);
 
@@ -70,6 +71,20 @@ function SearchBar({ initialQuery = "" }) {
             setCollection(data.results);
           } else {
             setCollection([]);
+          }
+        });
+
+      fetch(
+        `https://api.themoviedb.org/3/search/company?api_key=9fee2dfca9fac3b1049c2bca2752291c&query=${encodeURIComponent(
+          e.target.value
+        )}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.errors) {
+            setCompany(data.results);
+          } else {
+            setCompany([]);
           }
         });
     } else {
@@ -198,6 +213,29 @@ function SearchBar({ initialQuery = "" }) {
                     <p>
                       {collection[0].name}{" "}
                       <p className="opacity-2">in Collection</p>
+                    </p>
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {company.length > 0 && query.length >= 2 ? (
+                  <div
+                    className="search-result"
+                    onClick={() => {
+                      navigate(
+                        "/search/company?query=" +
+                          encodeURIComponent(company[0].name) +
+                          "&page=1"
+                      );
+                      window.location.reload(false);
+                    }}
+                    tabIndex="0"
+                  >
+                    <div className="result-icon">
+                      <i class="fa-solid fa-building"></i>
+                    </div>
+                    <p>
+                      {company[0].name} <p className="opacity-2">in Company</p>
                     </p>
                   </div>
                 ) : (

@@ -25,6 +25,16 @@ const SearchCard = ({ collection, type }) => {
               }
               alt={collection.name}
             />
+          ) : type === "company" ? (
+            <img
+              className="company-list-img"
+              src={
+                collection.logo_path
+                  ? IMG_URL + collection.logo_path
+                  : "https://via.placeholder.com/300x100/FFF"
+              }
+              alt={collection.name}
+            />
           ) : (
             <img
               className="movie-list-img"

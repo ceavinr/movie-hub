@@ -152,6 +152,20 @@ const Collections = () => {
                 <></>
               )}
             </button>
+            <button
+              className={category === "company" ? "active" : ""}
+              id="company"
+              onClick={onClick}
+            >
+              Companies{" "}
+              {category === "company" ? (
+                <span className="count-nav" id="company">
+                  {total > 99 ? "99+" : total}
+                </span>
+              ) : (
+                <></>
+              )}
+            </button>
           </div>
           <SearchBar initialQuery={query} />
           {total > 0 ? (
@@ -173,7 +187,9 @@ const Collections = () => {
           <div className="movie-container">
             {total > 0 ? (
               search.map((collection) =>
-                category === "person" || category === "collection" ? (
+                category === "person" ||
+                category === "collection" ||
+                category === "company" ? (
                   <CollectionCard collection={collection} type={category} />
                 ) : (
                   <Movie
@@ -191,6 +207,10 @@ const Collections = () => {
             ) : category === "person" ? (
               <h2 className="no-movies">
                 There are no people that matched your query
+              </h2>
+            ) : category === "company" ? (
+              <h2 className="no-movies">
+                There are no companies that matched your query
               </h2>
             ) : (
               <h2 className="no-movies">
