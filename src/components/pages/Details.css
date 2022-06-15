@@ -18,8 +18,11 @@
 }
 
 .heading{
+  font-size: 60px;
+  color: var(--secondary);
   display: flex;
   flex-wrap: wrap;
+  text-decoration: none;
 }
 
 .details-container {
@@ -54,6 +57,12 @@
 .details-poster {
   width: 100%;
   grid-area: a;
+}
+.company-logo {
+  background-color: white;
+  border-radius: 10px !important;
+  margin-right: 1rem;
+  padding: 100px 50px
 }
 .poster {
   width: 500px;
@@ -154,6 +163,31 @@
 .collection-banner-button:active{
   transform: translateY(4px);
 }
+
+.details-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.more-movie {
+  border: 2px solid;
+  background:transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-size: 20px;
+  transition: all 20ms ease-in-out ;
+  cursor: pointer;
+}
+
+.more-movie.active{
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
 /* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */ 
 @media screen and (max-width: 1024px) {
   section > h1 {
@@ -188,6 +222,9 @@
   section > h3 {
     font-size: 25px;
   }
+  .more-movie {
+    font-size: 15px;
+  }
 }
 
 /* ============= MEDIA QUERIES (SMALLER DEVICES) ============= */ 
@@ -208,6 +245,9 @@
   }
   .details-desc p {
     font-size: 20px;
+  }
+  .more-movie {
+    font-size: 13px;
   }
 }
 
@@ -231,6 +271,9 @@
   }
   .poster  {
     border-radius: 10px;
+  }
+  .company-logo {
+    padding: 30px
   }
   .details-header span {
     font-size: 50%;
@@ -271,6 +314,9 @@
   .collection-banner button {
     font-size: 15px;
   }
+  .more-movie {
+    font-size: 13px;
+  }
 }
 /* ============= MEDIA QUERIES (SMALL DEVICES) ============= */ 
 @media screen and (max-width: 480px) {
@@ -299,5 +345,9 @@
   }
   .collection-banner button {
     font-size: 10px;
+  }
+  .more-movie {
+    font-size: 10px;
+    padding: 0.3rem 0.5rem;
   }
 }

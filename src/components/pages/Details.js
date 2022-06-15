@@ -207,13 +207,13 @@ const Details = () => {
                     )}
                   </p>
                   <br />
-                  {movie.runtime && (
+                  {movie.runtime > 0 && (
                     <p>
                       Runtime: {Math.floor(movie.runtime / 60)}h{" "}
                       {movie.runtime - Math.floor(movie.runtime / 60) * 60}m
                     </p>
                   )}
-                  {movie.episode_run_time && (
+                  {movie.episode_run_time > 0 && (
                     <p>
                       Runtime: {Math.floor(movie.episode_run_time[0] / 60)}h{" "}
                       {movie.episode_run_time[0] -
