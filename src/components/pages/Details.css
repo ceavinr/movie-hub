@@ -60,6 +60,9 @@
   border-radius: 50px;
 }
 .details-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   grid-area: b;
 }
 .details-info {
@@ -120,9 +123,6 @@
 .details-companies {
   display: inline-flex;
   gap: 10px;
-}
-.movie-company {
-  text-decoration: underline
 }
 .details-crews > ol{
   grid-area: c;
@@ -226,7 +226,9 @@
     grid-template-areas: "a c"
                          "b b";
   }
-
+  .details-crews > ol{
+    grid-template-columns: repeat(2, 1fr);
+  }
   .poster  {
     border-radius: 10px;
   }

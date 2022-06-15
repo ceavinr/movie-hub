@@ -124,10 +124,13 @@ const Details = () => {
             <h1 className="heading">
               {category === "movie" ? movie.title : movie.name}
               {"\u00A0"}
-              <span className={getColor(movie.vote_average)}>
-                <i class="fas fa-star" />{" "}
-                {movie.vote_average ? movie.vote_average.toFixed(1) : ""}
-              </span>
+              {movie.vote_average ? (
+                <span className={getColor(movie.vote_average)}>
+                  <i class="fas fa-star" /> {movie.vote_average.toFixed(1)}
+                </span>
+              ) : (
+                <span className="warning">Unrated</span>
+              )}
             </h1>
 
             <div className="details-genres">
@@ -145,21 +148,6 @@ const Details = () => {
                 <></>
               )}
             </div>
-            {/* <div className="details-companies">
-              {movie.production_companies ? (
-                movie.production_companies.map((company) => (
-                  <>
-                    <img
-                      className="company-img"
-                      src={IMG_URL_W10 + company.logo_path}
-                    />
-                    <h3 className="movie-company">{company.name}</h3>
-                  </>
-                ))
-              ) : (
-                <></>
-              )}
-            </div> */}
           </div>
 
           {Object.keys(movie).length === 3 ? (
@@ -194,6 +182,9 @@ const Details = () => {
                   )}
                 </div>
                 <div className="details-desc">
+                  {movie.tagline && <p className="italic">"{movie.tagline}"</p>}
+                  <br />
+                  <p className="underline">Overview</p>
                   {movie.overview ? (
                     <p>{movie.overview}</p>
                   ) : (
@@ -216,8 +207,36 @@ const Details = () => {
                     )}
                   </p>
                   <br />
+                  {movie.runtime && (
+                    <p>
+                      Runtime: {Math.floor(movie.runtime / 60)}h{" "}
+                      {movie.runtime - Math.floor(movie.runtime / 60) * 60}m
+                    </p>
+                  )}
+                  {movie.episode_run_time && (
+                    <p>
+                      Runtime: {Math.floor(movie.episode_run_time[0] / 60)}h{" "}
+                      {movie.episode_run_time[0] -
+                        Math.floor(movie.episode_run_time[0] / 60) * 60}
+                      m
+                    </p>
+                  )}
+                  <br />
+                  {/* <p className="underline">Production Companies:</p>
+                  <div className="details-companies">
+                    {movie.production_companies ? (
+                      movie.production_companies.map((company) => (
+                        <>
+                          <h3 className="movie-company">{company.name}</h3>
+                        </>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                  </div> */}
                 </div>
                 <div className="details-crews">
+                  {/* <p className="underline">Crew(s)</p> */}
                   <ol>
                     {movie.created_by ? (
                       movie.created_by.map((people) => (

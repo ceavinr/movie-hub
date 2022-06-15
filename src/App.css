@@ -97,6 +97,15 @@ section {
   opacity: .2;
 }
 
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
 button:active{
   transform: translateY(4px);
 }
